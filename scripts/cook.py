@@ -10,19 +10,23 @@ output_path = cooked_path + "cmu.js"
 
 with open(output_path, mode='w') as out_file:
     out_file.write("let cmudict = {\n")
-    with open(cmudict, mode='r') as in_file:
+    with open(cmudict, mode='r', encoding='latin-1') as in_file:
         for line in in_file:
-            result = re.search("(.+?)(\((\d+)\))?  (.*)", line)
-            
+            if line.startswith(";;;"):
+                continue
+
+            result = re.search("(.+?)(\\((\\d+)\\))?  (.*)", line)
+
             term = str(result.group(1))
             term = term.replace("\"", "\\\"")
-            
+
             number = result.group(3)
-            phonemes = "\"" + "\" \"".join(result.group(4).split(" ")) + "\""
+            phonemes = "\"" + "\", \"".join(result.group(4).split(" ")) + "\""
 
             if number == None:
                 out_file.write("\t\"" + term + "\": [" + phonemes + "],\n")
 
     out_file.write("}\n")
+    out_file.write("\nexport default { cmudict }\n")
 
 print("=== DONE ===")
