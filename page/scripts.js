@@ -55,10 +55,13 @@ const ipa = {
 
 var map = ipa;
 
+// Takes in a string representing an ARPAbet phoneme, and returns a tuple
+// containing 1) the phoneme stripped of any stress indicators, and 2) the
+// stress as an integer or null if it is a consonant.
 function read_phoneme(phoneme) {
 	const last_char = phoneme.substring(phoneme.length-1, phoneme.length)
 	const stress = Number(last_char)
-	console.log(stress)
+
 	if (!isNaN(stress)) {
 		return [phoneme.substring(0, phoneme.length-1), stress];
 	} else {
@@ -66,6 +69,30 @@ function read_phoneme(phoneme) {
 	}
 }
 
+// Converts a word into phonemic representation, taking into account punctuation
+// and capitalization.
+function convert_word(word) {
+	return convert_text(word)
+}
+
+// Converts a string of text from a string into a phonemic representation.
+function convert_text(text) {
+	const phonemes = cmudict[text];
+	if (phonemes === undefined) {
+		return text
+	}
+
+	var value = "";
+	for (const p_index in phonemes) {
+		const [phoneme, stress] = read_phoneme(phonemes[p_index]);
+		value += map[phoneme];
+	}
+
+	return value
+}
+
+// Convert the text in the input field into phonetic form, and display it
+// in the output field.
 function convert() {
 	let input_field = document.getElementById("input");
 	let output_field = document.getElementById("output");
@@ -75,16 +102,10 @@ function convert() {
 
 	// TODO: Get string properties (punctuation, capitalization)
 
-	let splitten = in_text.toUpperCase().split(" ");
+	let splitten = in_text.toUpperCase().split(/\b/);
 	for (const index in splitten) {
 		const word = splitten[index];
-		const phonemes = cmudict[word];
-		for (const p_index in phonemes) {
-			const [phoneme, stress] = read_phoneme(phonemes[p_index]);
-			out_text += map[phoneme];
-		}
-
-		out_text += " ";
+		out_text += convert_word(word);
 	}
 
 	output_field.textContent = out_text;
