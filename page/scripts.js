@@ -1,112 +1,8 @@
 import cmudict from "./cmu.js"
+import * as capitalization from "./capitalization.js"
+import * as ipa from "./systems/ipa.js"
 
-const ipa = {
-	"AA": "ɑ",
-	"AE": "æ",
-	"AH": "ʌ",
-	"AO": "ɔ",
-	"AW": "aʊ",
-	"AX": "ə",
-	"AXR": "ɚ",
-	"AY": "aɪ",
-	"EH": "ɛ",
-	"ER": "ɝ",
-	"EY": "eɪ",
-	"IH": "ɪ",
-	"IX": "ɨ",
-	"IY": "i",
-	"OW": "oʊ",
-	"OY": "ɔɪ",
-	"UH": "ʊ",
-	"UW": "u",
-	"UX": "ʉ",
-	"B": "b",
-	"CH": "tʃ",
-	"D": "d",
-	"DH": "ð",
-	"DX": "ɾ",
-	"EL": "l̩",
-	"EM": "m̩",
-	"EN": "n̩",
-	"F": "f",
-	"G": "g",
-	"HH": "h",
-	"JH": "dʒ",
-	"K": "k",
-	"L": "l",
-	"M": "m",
-	"N": "n",
-	"NG": "ŋ",
-	"NX": "ɾ̃",
-	"P": "p",
-	"Q": "ʔ",
-	"R": "ɹ",
-	"S": "s",
-	"SH": "ʃ",
-	"T": "t",
-	"TH": "θ",
-	"V": "v",
-	"W": "w",
-	"WH": "ʍ",
-	"Y": "j",
-	"Z": "z",
-	"ZH": "ʒ",
-}
-
-var map = ipa;
-
-// Returns the capitalization type of the word.
-// 0: Other (no pattern detected)
-// 1: Lowercase
-// 2: Uppercase
-// 3: Title case
-function read_capitalization(word) {
-	const firstUpper = (word.charAt(0) == word.charAt(0).toUpperCase())
-	var lastUpper = null
-	for (let index = 1; index < word.length; index++) {
-		const isUpper = (word.charAt(index) == word.charAt(index).toUpperCase())
-		if (lastUpper != null && lastUpper != isUpper) {
-			return 0
-		}
-		lastUpper = isUpper
-	}
-	if (!firstUpper && !lastUpper) {
-		return 1
-	}
-	if (firstUpper && lastUpper) {
-		return 2
-	}
-	if (firstUpper && !lastUpper) {
-		return 3
-	}
-}
-
-// Applies capitalization pattern to the word.
-// 1: Lowercase
-// 2: Uppercase
-// 3: Title case
-function apply_capitalization(word, pattern) {
-	if (pattern < 1 || pattern > 3) {
-		return word
-	}
-
-	var output = ""
-	if (pattern == 2 || pattern == 3) {
-		output += word.charAt(0).toUpperCase()
-	} else {
-		output += word.charAt(0).toLowerCase()
-	}
-	
-	for (let index = 1; index < word.length; index++) {
-		if (pattern == 2) {
-			output += word.charAt(index).toUpperCase()
-		} else {
-			output += word.charAt(index).toLowerCase()
-		}
-	}
-
-	return output
-}
+var map = ipa.system;
 
 // Takes in a string representing an ARPAbet phoneme, and returns a tuple
 // containing 1) the phoneme stripped of any stress indicators, and 2) the
@@ -125,9 +21,9 @@ function read_phoneme(phoneme) {
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
 function convert_word(word) {
-	let case_pattern = read_capitalization(word)
+	let case_pattern = capitalization.read(word)
 	let converted = convert_text(word)
-	let styled = apply_capitalization(converted, case_pattern)
+	let styled = capitalization.apply(converted, case_pattern)
 	return styled
 }
 
