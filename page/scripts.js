@@ -55,6 +55,59 @@ const ipa = {
 
 var map = ipa;
 
+// Returns the capitalization type of the word.
+// 0: Other (no pattern detected)
+// 1: Lowercase
+// 2: Uppercase
+// 3: Title case
+function read_capitalization(word) {
+	const firstUpper = (word.charAt(0) == word.charAt(0).toUpperCase())
+	var lastUpper = null
+	for (let index = 1; index < word.length; index++) {
+		const isUpper = (word.charAt(index) == word.charAt(index).toUpperCase())
+		if (lastUpper != null && lastUpper != isUpper) {
+			return 0
+		}
+		lastUpper = isUpper
+	}
+	if (!firstUpper && !lastUpper) {
+		return 1
+	}
+	if (firstUpper && lastUpper) {
+		return 2
+	}
+	if (firstUpper && !lastUpper) {
+		return 3
+	}
+}
+
+// Applies capitalization pattern to the word.
+// 1: Lowercase
+// 2: Uppercase
+// 3: Title case
+function apply_capitalization(word, pattern) {
+	if (pattern < 1 || pattern > 3) {
+		return word
+	}
+
+	var output = ""
+	if (pattern == 2 || pattern == 3) {
+		output += word.charAt(0).toUpperCase()
+	} else {
+		output += word.charAt(0).toLowerCase()
+	}
+	
+	for (let index = 1; index < word.length; index++) {
+		if (pattern == 2) {
+			output += word.charAt(index).toUpperCase()
+		} else {
+			output += word.charAt(index).toLowerCase()
+		}
+	}
+
+	return output
+}
+
 // Takes in a string representing an ARPAbet phoneme, and returns a tuple
 // containing 1) the phoneme stripped of any stress indicators, and 2) the
 // stress as an integer or null if it is a consonant.
@@ -72,12 +125,15 @@ function read_phoneme(phoneme) {
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
 function convert_word(word) {
-	return convert_text(word)
+	let case_pattern = read_capitalization(word)
+	let converted = convert_text(word)
+	let styled = apply_capitalization(converted, case_pattern)
+	return styled
 }
 
 // Converts a string of text from a string into a phonemic representation.
 function convert_text(text) {
-	const phonemes = cmudict[text];
+	const phonemes = cmudict[text.toUpperCase()];
 	if (phonemes === undefined) {
 		return text
 	}
@@ -102,7 +158,7 @@ function convert() {
 
 	// TODO: Get string properties (punctuation, capitalization)
 
-	let splitten = in_text.toUpperCase().split(/\b/);
+	let splitten = in_text.split(/\b/);
 	for (const index in splitten) {
 		const word = splitten[index];
 		out_text += convert_word(word);
