@@ -1,4 +1,6 @@
-export const system = {
+import System from "./system.js"
+
+const graph_map = {
 	"AA": "ɑ",
 	"AE": "æ",
 	"AH": "ʌ",
@@ -50,3 +52,7 @@ export const system = {
 	"Z": "z",
 	"ZH": "ʒ",
 }
+
+const ipa = new System(graph_map, false)
+
+export { ipa as system }

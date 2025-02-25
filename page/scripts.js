@@ -2,7 +2,7 @@ import cmudict from "./cmu.js"
 import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
 
-var map = ipa.system;
+var system = ipa.system;
 
 // Takes in a string representing an ARPAbet phoneme, and returns a tuple
 // containing 1) the phoneme stripped of any stress indicators, and 2) the
@@ -21,10 +21,14 @@ function read_phoneme(phoneme) {
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
 function convert_word(word) {
-	let case_pattern = capitalization.read(word)
-	let converted = convert_text(word)
-	let styled = capitalization.apply(converted, case_pattern)
-	return styled
+	if (system.use_uppercase) {
+		let case_pattern = capitalization.read(word)
+		let converted = convert_text(word)
+		let styled = capitalization.apply(converted, case_pattern)
+		return styled
+	} else {
+		return convert_text(word)
+	}
 }
 
 // Converts a string of text from a string into a phonemic representation.
@@ -37,7 +41,7 @@ function convert_text(text) {
 	var value = "";
 	for (const p_index in phonemes) {
 		const [phoneme, stress] = read_phoneme(phonemes[p_index]);
-		value += map[phoneme];
+		value += system.get_graph(phoneme);
 	}
 
 	return value
