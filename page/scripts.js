@@ -59,8 +59,18 @@ function convert() {
 	// TODO: Get string properties (punctuation, capitalization)
 
 	let splitten = in_text.split(/\b/);
-	for (const index in splitten) {
-		const word = splitten[index];
+	for (var index = 0; index < splitten.length; index += 1) {
+		let word = splitten[index];
+		let next = splitten[index + 1];
+
+		// Read ahead in the case of contractions
+		if (index < splitten.length - 1
+			&& splitten[index+1] == "'"
+			&& ["d", "m", "s", "t", "ll", "re", "ve"].includes(splitten[index+2])) {
+			word += splitten[index+1] + splitten[index+2]
+			index += 2
+		}
+
 		out_text += convert_word(word);
 	}
 
