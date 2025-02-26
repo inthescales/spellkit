@@ -1,8 +1,9 @@
 import cmudict from "./cmu.js"
 import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
+import * as shavian from "./systems/shavian.js"
 
-var system = ipa.system;
+var system = shavian.system;
 
 // Takes in a string representing an ARPAbet phoneme, and returns a tuple
 // containing 1) the phoneme stripped of any stress indicators, and 2) the
@@ -55,8 +56,6 @@ function convert() {
 
 	let in_text = input_field.value;
 	var out_text = "";
-
-	// TODO: Get string properties (punctuation, capitalization)
 
 	let splitten = in_text.split(/\b/);
 	for (var index = 0; index < splitten.length; index += 1) {
