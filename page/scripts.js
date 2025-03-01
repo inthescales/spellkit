@@ -45,7 +45,19 @@ function convert_text(text) {
 		value += system.get_graph(phoneme);
 	}
 
+	value = convert_ligatures(value, system)
+
 	return value
+}
+
+// Modifies text with ligatures from the given system
+function convert_ligatures(text, system) {
+	let result = text
+	for (const [key, value] of Object.entries(system.ligatures)) {
+		result = result.replace(key, value)
+	}
+
+	return result
 }
 
 // Convert the text in the input field into phonetic form, and display it
