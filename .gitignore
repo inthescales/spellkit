@@ -1,3 +1,6 @@
 .DS_Store
 
 data/cooked/*
+
+page/data
+page/systems

@@ -86,9 +86,9 @@ def cook_system(input_path, output_path):
         else:
             capitalize = False
 
-        out_file.write(f"const {system["id"]} = new System(graph_map, ligatures, {str(capitalize).lower()})\n")
+        out_file.write(f"const {system["id"]} = new System(graph_map, ligatures, {str(capitalize).lower()})\n\n")
 
-        out_file.write(f"\nexport default {system["id"]}\n")
+        out_file.write("export { " + system["id"] + " as system }\n")
 
 system_files = os.listdir(system_path)
 for file in system_files:

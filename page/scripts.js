@@ -3,7 +3,7 @@ import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
 import * as shavian from "./systems/shavian.js"
 
-var system = shavian.system;
+const system = shavian.system;
 
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
