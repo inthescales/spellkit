@@ -1,6 +1,6 @@
 import System from "./system.js"
 
-const graph_map = {
+let graph_map = {
 	"ɑ": "𐑭",
 	"æ": "𐑨",
 	"ʌ": "𐑳",
@@ -46,7 +46,7 @@ const graph_map = {
 	"ʒ": "𐑠",
 }
 
-const ligature_map = {
+let ligatures = {
 	"𐑭𐑮": "𐑸",
 	"𐑷𐑮": "𐑹",
 	"𐑱𐑮": "𐑺",
@@ -57,11 +57,6 @@ const ligature_map = {
 	"𐑘𐑵": "𐑿",
 }
 
-/*
-OTHER PROBLEMS:
-- Does not use single-letter abbreviations of the words 'the' (𐑞), 'of' (𐑝), 'and' (𐑯), 'to' (𐑑), or 'for' (𐑓)
-*/
+const shavian = new System(graph_map, ligatures, false)
 
-const shavian = new System(graph_map, false, ligature_map)
-
-export { shavian as system }
+export default shavian

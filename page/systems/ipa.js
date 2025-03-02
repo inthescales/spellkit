@@ -1,6 +1,6 @@
 import System from "./system.js"
 
-const graph_map = {
+let graph_map = {
 	"ɑ": "ɑ",
 	"æ": "æ",
 	"ʌ": "ʌ",
@@ -39,9 +39,11 @@ const graph_map = {
 	"w": "w",
 	"j": "j",
 	"z": "z",
-	"ʒ": "ʒ"
+	"ʒ": "ʒ",
 }
 
-const ipa = new System(graph_map, false, [])
+let ligatures = []
 
-export { ipa as system }
+const ipa = new System(graph_map, ligatures, false)
+
+export default ipa

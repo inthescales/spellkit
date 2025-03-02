@@ -1,4 +1,4 @@
-import cmudict from "./cmu.js"
+import cmudict from "./data/cmu.js"
 import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
 import * as shavian from "./systems/shavian.js"
