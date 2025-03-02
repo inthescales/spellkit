@@ -2,5 +2,5 @@
 
 data/cooked/*
 
-page/data
-page/systems
+page/data/*
+page/systems/*
