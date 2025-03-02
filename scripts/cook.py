@@ -1,6 +1,8 @@
 import re
 import sys
 
+import gen_am
+
 root = sys.argv[1]
 raw_path = root + "data/raw/"
 cmudict = raw_path + "cmudict-0.7b"
@@ -15,18 +17,21 @@ with open(output_path, mode='w') as out_file:
             if line.startswith(";;;"):
                 continue
 
-            result = re.search("(.+?)(\\((\\d+)\\))?  (.*)", line)
+            result = re.search("(.+?)(\\((\\d+)\\))? +(.*)", line)
 
             term = str(result.group(1))
             term = term.replace("\"", "\\\"")
 
             number = result.group(3)
-            phonemes = "\"" + "\", \"".join(result.group(4).split(" ")) + "\""
+
+            codes = result.group(4).split(" ")
+            phonemes = [gen_am.from_arpa(code ) for code in codes]
+            phoneme_text = "\"" + "\", \"".join(phonemes) + "\""
 
             if number == None:
-                out_file.write("\t\"" + term + "\": [" + phonemes + "],\n")
+                out_file.write("\t\"" + term + "\": [" + phoneme_text + "],\n")
 
     out_file.write("}\n")
-    out_file.write("\nexport default { cmudict }\n")
+    out_file.write("\nexport default cmudict\n")
 
 print("=== DONE ===")

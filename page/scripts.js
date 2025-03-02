@@ -5,20 +5,6 @@ import * as shavian from "./systems/shavian.js"
 
 var system = shavian.system;
 
-// Takes in a string representing an ARPAbet phoneme, and returns a tuple
-// containing 1) the phoneme stripped of any stress indicators, and 2) the
-// stress as an integer or null if it is a consonant.
-function read_phoneme(phoneme) {
-	const last_char = phoneme.substring(phoneme.length-1, phoneme.length)
-	const stress = Number(last_char)
-
-	if (!isNaN(stress)) {
-		return [phoneme.substring(0, phoneme.length-1), stress];
-	} else {
-		return [phoneme, null];
-	}
-}
-
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
 function convert_word(word) {
@@ -41,7 +27,7 @@ function convert_text(text) {
 
 	var value = "";
 	for (const p_index in phonemes) {
-		const [phoneme, stress] = read_phoneme(phonemes[p_index]);
+		const phoneme = phonemes[p_index]
 		value += system.get_graph(phoneme);
 	}
 
@@ -52,6 +38,10 @@ function convert_text(text) {
 
 // Modifies text with ligatures from the given system
 function convert_ligatures(text, system) {
+	if (system.ligatures.length == 0) {
+		return text
+	}
+
 	let result = text
 	for (const [key, value] of Object.entries(system.ligatures)) {
 		result = result.replace(key, value)
