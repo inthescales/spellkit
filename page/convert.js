@@ -4,18 +4,6 @@ import * as ipa from "./systems/ipa.js"
 import * as shavian from "./systems/shavian.js"
 import { systems } from "./systems/list.js"
 
-// Returns the first system matching the given id
-function system_with_id(id) {
-	for (const index in systems) {
-		const system = systems[index]
-		if (system.id == id) {
-			return system
-		}
-	}
-
-	return undefined
-}
-
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
 function convert_word(word, system) {
@@ -91,6 +79,20 @@ function convert(system_id) {
 	}
 
 	output_field.textContent = out_text;
+}
+
+// HELPERS =============================
+
+// Returns the first system matching the given id
+function system_with_id(id) {
+	for (const index in systems) {
+		const system = systems[index]
+		if (system.id == id) {
+			return system
+		}
+	}
+
+	return undefined
 }
 
 export { convert };

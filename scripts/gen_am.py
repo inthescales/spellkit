@@ -54,11 +54,17 @@ def from_arpa(code):
 		"ZH": "ʒ"
 	}
 
+	# Alternate IPA values for when these codes appear in unstressed positions.
+	# I infer these based on stress since CMUDict doesn't indicate them, but this
+	# distinction is of relevance to some systems. I'm not 100% sure of the accuracy
+	# of this inference, but 
+	# Assumes unstressed vowel merger (/ɨ/ not distinct from /ə/).
 	unstressed = {
 		"AH": "ə",
 		"ER": "ɚ"
 	}
 
+	# Separate stress value
 	if code[-1].isdigit():
 		letter_code = code[:-1]
 		stress = int(code[-1])
@@ -70,6 +76,7 @@ def from_arpa(code):
 		print("ERROR: unsupported ARPABet code '" + letter_code + "'")
 		exit(0)
 
+	# Choose IPA value
 	if stress == 0 and letter_code in unstressed:
 		ipa = unstressed[letter_code]
 	else:

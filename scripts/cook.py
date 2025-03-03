@@ -13,14 +13,14 @@ system_path = raw_path + "systems/"
 
 cooked_path = root + "data/cooked/"
 
-# Set up cooked directory
+# Set up cooked directory ==========
 
 if os.path.exists(cooked_path) and os.path.isdir(cooked_path):
     shutil.rmtree(cooked_path)
 
 os.mkdir(cooked_path)
 
-# Cook datasets
+# Cook datasets ==========
 
 def cook_cmudict(input_path, output_path):
     with open(output_path, mode='w') as out_file, \
@@ -52,7 +52,7 @@ def cook_cmudict(input_path, output_path):
 
 cook_cmudict(cmudict_path, cooked_path + "cmu.js")
 
-# Cook systems
+# Cook systems ==========
 
 import json
 
