@@ -64,9 +64,10 @@ def cook_system(input_path, output_path):
          open(input_path, mode='r') as in_file:
 
         system = json.load(in_file)
+        filename = file.split(".")[0]
 
         print("Cooking system '" + system["id"] + "'")
-        system_list.append([system["id"], system["name"], system["description"]])
+        system_list.append((filename, system))
 
         out_file.write("import System from \"./system.js\"\n\n")
 
@@ -88,7 +89,7 @@ def cook_system(input_path, output_path):
         else:
             capitalize = False
 
-        out_file.write(f"const {system["id"]} = new System(graph_map, ligatures, {str(capitalize).lower()})\n\n")
+        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", graph_map, ligatures, {str(capitalize).lower()})\n\n")
 
         out_file.write("export { " + system["id"] + " as system }\n")
 
@@ -96,12 +97,21 @@ def write_system_list(list):
     with open(cooked_path + "/systems/list.js", mode='w') as out_file:
         print("Writing system list")
 
-        out_file.write("const systems = [\n")
-        for sys_id, sys_name, sys_desc in system_list:
-            out_file.write("\t[\"" + sys_id + "\", \"" + sys_name + "\", \"" + sys_desc + "\"],\n")
+        for filename, system in system_list:
+            out_file.write("import * as " + system["id"] + " from \"./" + filename + ".js\"\n")
 
+        out_file.write("\n")
+        out_file.write("const manifest = [\n")
+        for filename, system in system_list:
+            out_file.write("\t[\"" + system["id"] + "\", \"" + system["name"] + "\", \"" + system["description"] + "\"],\n")
         out_file.write("]\n\n")
-        out_file.write("export default systems\n")
+
+        out_file.write("const systems = [\n")
+        for filename, system in system_list:
+            out_file.write("\t" + system["id"] + ".system,\n")
+        out_file.write("]\n\n")
+
+        out_file.write("export { manifest, systems }\n")
 
 system_files = os.listdir(system_path)
 for file in system_files:

@@ -2,6 +2,19 @@ import cmudict from "./data/cmu.js"
 import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
 import * as shavian from "./systems/shavian.js"
+import { systems } from "./systems/list.js"
+
+// Returns the first system matching the given id
+function system_with_id(id) {
+	for (const index in systems) {
+		const system = systems[index]
+		if (system.id == id) {
+			return system
+		}
+	}
+
+	return undefined
+}
 
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
@@ -53,7 +66,7 @@ function convert_ligatures(text, system) {
 // Convert the text in the input field into phonetic form, and display it
 // in the output field.
 function convert(system_id) {
-	const system = shavian.system;
+	const system = system_with_id(system_id)
 
 	let input_field = document.getElementById("input");
 	let output_field = document.getElementById("output");

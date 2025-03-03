@@ -1,9 +1,9 @@
-import system_list from "./systems/list.js"
+import { manifest } from "./systems/list.js"
 
 function populate_select(select_id) {
 	const sel = document.getElementById(select_id)
-	for (const index in system_list) {
-		const system = system_list[index]
+	for (const index in manifest) {
+		const system = manifest[index]
 		var option = document.createElement("option")
 		option.value = system[0]
 		option.text = system[1]

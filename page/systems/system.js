@@ -1,6 +1,7 @@
 export default class System {
 	#graphs;
-	constructor(graphs, ligatures, use_uppercase) {
+	constructor(id, graphs, ligatures, use_uppercase) {
+		this.id = id
 		this.#graphs = graphs;
 		this.use_uppercase = use_uppercase;
 		this.ligatures = ligatures
