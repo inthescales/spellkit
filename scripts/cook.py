@@ -57,6 +57,7 @@ cook_cmudict(cmudict_path, cooked_path + "cmu.js")
 import json
 
 os.mkdir(cooked_path + "systems/")
+system_list = []
 
 def cook_system(input_path, output_path):
     with open(output_path, mode='w') as out_file, \
@@ -65,6 +66,7 @@ def cook_system(input_path, output_path):
         system = json.load(in_file)
 
         print("Cooking system '" + system["id"] + "'")
+        system_list.append([system["id"], system["name"], system["description"]])
 
         out_file.write("import System from \"./system.js\"\n\n")
 
@@ -90,9 +92,22 @@ def cook_system(input_path, output_path):
 
         out_file.write("export { " + system["id"] + " as system }\n")
 
+def write_system_list(list):
+    with open(cooked_path + "/systems/list.js", mode='w') as out_file:
+        print("Writing system list")
+
+        out_file.write("const systems = [\n")
+        for sys_id, sys_name, sys_desc in system_list:
+            out_file.write("\t[\"" + sys_id + "\", \"" + sys_name + "\", \"" + sys_desc + "\"],\n")
+
+        out_file.write("]\n\n")
+        out_file.write("export default systems\n")
+
 system_files = os.listdir(system_path)
 for file in system_files:
     name = file.split(".")[0]
     cook_system(system_path + file, cooked_path + "/systems/" + name + ".js")
+
+write_system_list(system_list)
 
 print("=== DONE ===")

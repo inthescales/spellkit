@@ -3,23 +3,21 @@ import * as capitalization from "./capitalization.js"
 import * as ipa from "./systems/ipa.js"
 import * as shavian from "./systems/shavian.js"
 
-const system = shavian.system;
-
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
-function convert_word(word) {
+function convert_word(word, system) {
 	if (system.use_uppercase) {
 		let case_pattern = capitalization.read(word)
-		let converted = convert_text(word)
+		let converted = convert_text(word, system)
 		let styled = capitalization.apply(converted, case_pattern)
 		return styled
 	} else {
-		return convert_text(word)
+		return convert_text(word, system)
 	}
 }
 
 // Converts a string of text from a string into a phonemic representation.
-function convert_text(text) {
+function convert_text(text, system) {
 	const phonemes = cmudict[text.toUpperCase()];
 	if (phonemes === undefined) {
 		return text
@@ -50,9 +48,13 @@ function convert_ligatures(text, system) {
 	return result
 }
 
+// EXPORTS =============================
+
 // Convert the text in the input field into phonetic form, and display it
 // in the output field.
-function convert() {
+function convert(system_id) {
+	const system = shavian.system;
+
 	let input_field = document.getElementById("input");
 	let output_field = document.getElementById("output");
 
@@ -72,10 +74,10 @@ function convert() {
 			index += 2
 		}
 
-		out_text += convert_word(word);
+		out_text += convert_word(word, system);
 	}
 
 	output_field.textContent = out_text;
 }
 
-export default convert;
+export { convert };

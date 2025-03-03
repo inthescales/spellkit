@@ -3,13 +3,19 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module" src="scripts.js"></script>
 		<script type="module">
-			import convert from "./scripts.js";
+			import { convert } from "./scripts.js";
+			import { populate_select, get_selected } from "./elements.js";
+
 			globalThis.convert = convert
+			globalThis.get_selected = get_selected
+
+			populate_select("system_select")
 		</script>
 	</head>
 	<body>
-		<div class="column">
-			<button id="convert" onclick="convert()">convert</button>
+		<div id="column" class="column">
+			<select id="system_select" style="width: 200px;"></select>
+			<button id="convert" onclick="convert(get_selected('system_select'))">convert</button>
 			<table>
 				<tr>
 					<td>
