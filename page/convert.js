@@ -1,8 +1,7 @@
 import cmudict from "./data/cmu.js"
 import * as capitalization from "./capitalization.js"
-import * as ipa from "./systems/ipa.js"
-import * as shavian from "./systems/shavian.js"
 import { systems } from "./systems/list.js"
+import { get_custom } from "./custom.js"
 
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
@@ -85,6 +84,10 @@ function convert(system_id) {
 
 // Returns the first system matching the given id
 function system_with_id(id) {
+	if (id == "custom") {
+		return get_custom()
+	}
+
 	for (const index in systems) {
 		const system = systems[index]
 		if (system.id == id) {

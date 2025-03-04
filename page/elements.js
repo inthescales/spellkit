@@ -20,7 +20,7 @@ function selectTab(event, tabName, showConverter) {
 	event.currentTarget.className += " active"
 
 	// Toggle conversion table
-	const table = document.getElementById("conversionTable")
+	const table = document.getElementById("conversion")
 	if (showConverter) {
 		table.style.display = "block"
 	} else {
