@@ -92,6 +92,53 @@ function set_graphs(system) {
 	document.getElementById("zh").value = system.get_graph("ʒ")
 }
 
+function clear() {
+	document.getElementById("systemName").value = ""
+	document.getElementById("systemDescription").value = ""
+	
+	document.getElementById("aa").value = ""
+	document.getElementById("ae").value = ""
+	document.getElementById("uh").value = ""
+	document.getElementById("aw").value = ""
+	document.getElementById("au").value = ""
+	document.getElementById("ai").value = ""
+	document.getElementById("e").value = ""
+	document.getElementById("er").value = ""
+	document.getElementById("schwa").value = ""
+	document.getElementById("schwar").value = ""
+	document.getElementById("ei").value = ""
+	document.getElementById("ih").value = ""
+	document.getElementById("ee").value = ""
+	document.getElementById("oa").value = ""
+	document.getElementById("oi").value = ""
+	document.getElementById("horseshoe").value = ""
+	document.getElementById("oo").value = ""
+	document.getElementById("b").value = ""
+	document.getElementById("ch").value = ""
+	document.getElementById("d").value = ""
+	document.getElementById("dh").value = ""
+	document.getElementById("f").value = ""
+	document.getElementById("g").value = ""
+	document.getElementById("h").value = ""
+	document.getElementById("j").value = ""
+	document.getElementById("k").value = ""
+	document.getElementById("l").value = ""
+	document.getElementById("m").value = ""
+	document.getElementById("n").value = ""
+	document.getElementById("ng").value = ""
+	document.getElementById("p").value = ""
+	document.getElementById("r").value = ""
+	document.getElementById("s").value = ""
+	document.getElementById("sh").value = ""
+	document.getElementById("t").value = ""
+	document.getElementById("th").value = ""
+	document.getElementById("v").value = ""
+	document.getElementById("w").value = ""
+	document.getElementById("y").value = ""
+	document.getElementById("z").value = ""
+	document.getElementById("zh").value = ""
+}
+
 // EXPORTS =========================================
 
 function get_custom() {
@@ -112,4 +159,8 @@ function customize(system) {
 	document.getElementById("systemDescription").value = ""
 }
 
-export { get_custom, customize }
+function clear_custom() {
+	clear()
+}
+
+export { get_custom, customize, clear_custom }
