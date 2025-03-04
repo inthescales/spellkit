@@ -59,6 +59,9 @@ function set_graphs(system) {
 	for (const index in input_pairs) {
 		const pair = input_pairs[index]
 		pair[1].value = system.get_graph(pair[0])
+		if (system.get_graph(pair[0]) != "") {
+			pair[1].className = "graph"
+		}
 	}
 }
 
@@ -69,7 +72,23 @@ function clear() {
 	for (const index in input_pairs) {
 		const pair = input_pairs[index]
 		pair[1].value = ""
+		pair[1].className = "graph"
 	}
+}
+
+function validate() {
+	let ok = true
+	for (const index in input_pairs) {
+		const pair = input_pairs[index]
+		if (pair[1].value == "") {
+			ok = false
+			pair[1].className = "graph-error"
+		} else {
+			pair[1].className = "graph"
+		}
+	}
+
+	return ok
 }
 
 // EXPORTS =========================================
@@ -96,4 +115,10 @@ function clear_custom() {
 	clear()
 }
 
-export { get_custom, customize, clear_custom }
+function if_valid(exec) {
+	if (validate()) {
+		exec()
+	}
+}
+
+export { if_valid, get_custom, customize, clear_custom }

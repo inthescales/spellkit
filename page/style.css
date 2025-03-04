@@ -40,6 +40,13 @@
 	margin-right: .4em;
 }
 
+.graph-error {
+	width: 2em;
+	margin-right: .4em;
+	border: 2px solid red;
+	border-radius: 2px;
+}
+
 .graphTable {
 	width: 100%;
 	font-size: 13pt;

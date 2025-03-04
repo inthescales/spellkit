@@ -4,13 +4,14 @@
 		<script type="module">
 			import { convert } from "./convert.js";
 			import { selectTab, populate_select, get_selected_id } from "./elements.js";
-			import { get_custom, customize, clear_custom } from "./custom.js"
+			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
 
 			globalThis.selectTab = selectTab
 
 			globalThis.get_selected_id = get_selected_id
 			globalThis.system_with_id = system_with_id
+			globalThis.if_valid = if_valid
 			globalThis.customize = customize
 			globalThis.get_custom = get_custom
 			globalThis.clear_custom = clear_custom
@@ -97,7 +98,7 @@
 						<td><input id="zh" type="text" class="graph">bei<u>ge</u></td>
 					</tr>
 				</table>
-				<button id="convert" onclick="convert(get_custom())">convert</button>
+				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
 			</div>
 			<div id="about" class="tab_content" style="display: none">
 				<p>About text</p>
