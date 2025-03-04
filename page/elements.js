@@ -12,12 +12,13 @@ function selectTab(event, tabName, showConverter) {
 	// Deactivate all tab buttons
 	const buttons = document.getElementsByClassName("tab_button")
 	for (var index = 0; index < buttons.length; index++) {
-		buttons[index].className = buttons[index].className.replace(" active", "")
+		const button = buttons[index]
+		button.className = buttons[index].className.replace(" active", "")
 	}
 
 	// Show current tab contents and activate tab
 	document.getElementById(tabName).style.display = "block"
-	event.currentTarget.className += " active"
+	document.getElementById(tabName + "Button").className += " active"
 
 	// Toggle conversion table
 	const table = document.getElementById("conversion")
@@ -43,9 +44,9 @@ function populate_select(select_id) {
 }
 
 // Returns the currently selected element of the given select element
-function get_selected(select_id) {
+function get_selected_id(select_id) {
 	const sel = document.getElementById(select_id)
 	return sel.value
 }
 
-export { selectTab, populate_select, get_selected }
+export { selectTab, populate_select, get_selected_id }

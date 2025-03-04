@@ -3,11 +3,17 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
 			import { convert } from "./convert.js";
-			import { selectTab, populate_select, get_selected } from "./elements.js";
+			import { selectTab, populate_select, get_selected_id } from "./elements.js";
+			import { get_custom, customize } from "./custom.js"
+			import { system_with_id } from "./state.js"
 
-			globalThis.convert = convert
-			globalThis.get_selected = get_selected
 			globalThis.selectTab = selectTab
+
+			globalThis.get_selected_id = get_selected_id
+			globalThis.system_with_id = system_with_id
+			globalThis.customize = customize
+			globalThis.get_custom = get_custom
+			globalThis.convert = convert
 
 			populate_select("system_select")
 		</script>
@@ -15,17 +21,18 @@
 	<body>
 		<div id="column" class="column">
 			<div class="tab">
-			  <button class="tab_button" onclick="selectTab(event, 'presets', true)">Presets</button>
-			  <button class="tab_button" onclick="selectTab(event, 'custom', true)">Custom</button>
-			  <button class="tab_button" onclick="selectTab(event, 'about', false)">About</button>
+			  <button class="tab_button active" id="presetsButton" onclick="selectTab(event, 'presets', true)">Presets</button>
+			  <button class="tab_button" id="customButton" onclick="selectTab(event, 'custom', true)">Custom</button>
+			  <button class="tab_button" id="aboutButton" onclick="selectTab(event, 'about', false)">About</button>
 			</div>
 			<div id="presets" class="tab_content">
 				<select id="system_select" style="width: 200px;"></select>
-				<button id="convert" onclick="convert(get_selected('system_select'))">convert</button>
+				<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')))">convert</button>
+				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
 			</div>
 			<div id="custom" class="tab_content" style="display: none">
-				Name: <input type="text" value="New System"><br>
-				<textarea>System description</textarea>
+				Name: <input type="text" id="systemName" value="New System"><br>
+				<textarea id="systemDescription">System description</textarea>
 				<table class=graphTable>
 					<tr>
 						<td><input id="ae" type="text" class="graph">tr<u>a</u>p</td>
@@ -88,7 +95,7 @@
 						<td><input id="zh" type="text" class="graph">bei<u>ge</u></td>
 					</tr>
 				</table>
-				<button id="convert" onclick="convert('custom')">convert</button>
+				<button id="convert" onclick="convert(get_custom())">convert</button>
 			</div>
 			<div id="about" class="tab_content" style="display: none">
 				<p>About text</p>

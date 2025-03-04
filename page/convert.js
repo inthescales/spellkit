@@ -1,7 +1,6 @@
 import cmudict from "./data/cmu.js"
 import * as capitalization from "./capitalization.js"
-import { systems } from "./systems/list.js"
-import { get_custom } from "./custom.js"
+import { system_with_id } from "./state.js"
 
 // Converts a word into phonemic representation, taking into account punctuation
 // and capitalization.
@@ -52,9 +51,7 @@ function convert_ligatures(text, system) {
 
 // Convert the text in the input field into phonetic form, and display it
 // in the output field.
-function convert(system_id) {
-	const system = system_with_id(system_id)
-
+function convert(system) {
 	let input_field = document.getElementById("input");
 	let output_field = document.getElementById("output");
 
@@ -78,24 +75,6 @@ function convert(system_id) {
 	}
 
 	output_field.textContent = out_text;
-}
-
-// HELPERS =============================
-
-// Returns the first system matching the given id
-function system_with_id(id) {
-	if (id == "custom") {
-		return get_custom()
-	}
-
-	for (const index in systems) {
-		const system = systems[index]
-		if (system.id == id) {
-			return system
-		}
-	}
-
-	return undefined
 }
 
 export { convert };

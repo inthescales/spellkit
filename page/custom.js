@@ -48,6 +48,50 @@ function get_graphs() {
 	return graphs
 }
 
+function set_graphs(system) {
+	document.getElementById("aa").value = system.get_graph("ɑ")
+	document.getElementById("ae").value = system.get_graph("æ")
+	document.getElementById("uh").value = system.get_graph("ʌ")
+	document.getElementById("aw").value = system.get_graph("ɔ")
+	document.getElementById("au").value = system.get_graph("aʊ")
+	document.getElementById("ai").value = system.get_graph("aɪ")
+	document.getElementById("e").value = system.get_graph("ɛ")
+	document.getElementById("er").value = system.get_graph("ɝ")
+	document.getElementById("schwa").value = system.get_graph("ə")
+	document.getElementById("schwar").value = system.get_graph("ɚ")
+	document.getElementById("ei").value = system.get_graph("eɪ")
+	document.getElementById("ih").value = system.get_graph("ɪ")
+	document.getElementById("ee").value = system.get_graph("i")
+	document.getElementById("oa").value = system.get_graph("oʊ")
+	document.getElementById("oi").value = system.get_graph("ɔɪ")
+	document.getElementById("horseshoe").value = system.get_graph("ʊ")
+	document.getElementById("oo").value = system.get_graph("u")
+	document.getElementById("b").value = system.get_graph("b")
+	document.getElementById("ch").value = system.get_graph("tʃ")
+	document.getElementById("d").value = system.get_graph("d")
+	document.getElementById("dh").value = system.get_graph("ð")
+	document.getElementById("f").value = system.get_graph("f")
+	document.getElementById("g").value = system.get_graph("g")
+	document.getElementById("h").value = system.get_graph("h")
+	document.getElementById("j").value = system.get_graph("dʒ")
+	document.getElementById("k").value = system.get_graph("k")
+	document.getElementById("l").value = system.get_graph("l")
+	document.getElementById("m").value = system.get_graph("m")
+	document.getElementById("n").value = system.get_graph("n")
+	document.getElementById("ng").value = system.get_graph("ŋ")
+	document.getElementById("p").value = system.get_graph("p")
+	document.getElementById("r").value = system.get_graph("ɹ")
+	document.getElementById("s").value = system.get_graph("s")
+	document.getElementById("sh").value = system.get_graph("ʃ")
+	document.getElementById("t").value = system.get_graph("t")
+	document.getElementById("th").value = system.get_graph("θ")
+	document.getElementById("v").value = system.get_graph("v")
+	document.getElementById("w").value = system.get_graph("w")
+	document.getElementById("y").value = system.get_graph("j")
+	document.getElementById("z").value = system.get_graph("z")
+	document.getElementById("zh").value = system.get_graph("ʒ")
+}
+
 // EXPORTS =========================================
 
 function get_custom() {
@@ -62,4 +106,10 @@ function get_custom() {
 	return new System(id, graph_map, ligatures, use_uppercase)
 }
 
-export { get_custom }
+function customize(system) {
+	set_graphs(system)
+	document.getElementById("systemName").value = ""
+	document.getElementById("systemDescription").value = ""
+}
+
+export { get_custom, customize }
