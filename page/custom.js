@@ -68,7 +68,7 @@ function clear() {
 
 	for (const index in input_pairs) {
 		const pair = input_pairs[index]
-		pair[0].value = ""
+		pair[1].value = ""
 	}
 }
 
