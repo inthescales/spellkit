@@ -3,19 +3,33 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
 			import { convert } from "./convert.js";
-			import { populate_select, get_selected } from "./elements.js";
+			import { selectTab, populate_select, get_selected } from "./elements.js";
 
 			globalThis.convert = convert
 			globalThis.get_selected = get_selected
+			globalThis.selectTab = selectTab
 
 			populate_select("system_select")
 		</script>
 	</head>
 	<body>
 		<div id="column" class="column">
-			<select id="system_select" style="width: 200px;"></select>
-			<button id="convert" onclick="convert(get_selected('system_select'))">convert</button>
-			<table>
+			<div class="tab">
+			  <button class="tab_button" onclick="selectTab(event, 'presets', true)">Presets</button>
+			  <button class="tab_button" onclick="selectTab(event, 'custom', true)">Custom</button>
+			  <button class="tab_button" onclick="selectTab(event, 'about', false)">About</button>
+			</div>
+			<div id="presets" class="tab_content">
+				<select id="system_select" style="width: 200px;"></select>
+				<button id="convert" onclick="convert(get_selected('system_select'))">convert</button>
+			</div>
+			<div id="custom" class="tab_content" style="display: none">
+				<p>Custom system interface</p>
+			</div>
+			<div id="about" class="tab_content" style="display: none">
+				<p>About text</p>
+			</div>
+			<table id="conversionTable">
 				<tr>
 					<td>
 						<textarea id="input" rows="20" cols="50" resize="none">Sample text</textarea>
