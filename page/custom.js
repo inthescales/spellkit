@@ -44,12 +44,27 @@ const input_pairs = [
 	["ʒ", document.getElementById("zh")],
 ]
 
+const option_pairs = [
+	["use-capitals", document.getElementById("option-capitals")]
+]
+
 function get_graphs() {
 	let graphs = {}
 
 	for (const index in input_pairs) {
 		const pair = input_pairs[index]
 		graphs[pair[0]] = pair[1].value
+	}
+
+	return graphs
+}
+
+function get_options() {
+	let graphs = {}
+
+	for (const index in option_pairs) {
+		const pair = option_pairs[index]
+		graphs[pair[0]] = pair[1].checked
 	}
 
 	return graphs
@@ -95,6 +110,7 @@ function validate() {
 
 function get_custom() {
 	const graph_map = get_graphs()
+	const options = get_options()
 	const table = document.getElementById("conversion")
 
 	const id = "custom"
@@ -102,7 +118,7 @@ function get_custom() {
 	const ligatures = []
 	const use_uppercase = false
 
-	return new System(id, graph_map, ligatures, use_uppercase)
+	return new System(id, graph_map, ligatures, options["use-capitals"])
 }
 
 function customize(system) {
