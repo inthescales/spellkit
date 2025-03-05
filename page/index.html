@@ -6,6 +6,7 @@
 			import { selectTab, populate_select, get_selected_id } from "./elements.js";
 			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
+			import { export_system } from "./transport.js"
 
 			globalThis.selectTab = selectTab
 
@@ -15,6 +16,7 @@
 			globalThis.customize = customize
 			globalThis.get_custom = get_custom
 			globalThis.clear_custom = clear_custom
+			globalThis.export_system = export_system
 			globalThis.convert = convert
 
 			populate_select("system_select")
@@ -33,9 +35,11 @@
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
 			</div>
 			<div id="custom" class="tab_content" style="display: none">
-				<button onclick="clear_custom()">clear</button><br>
+				<button onclick="clear_custom()">clear</button>
+				<button onclick="export_system(get_custom())">export</button><br>
 				Name: <input type="text" id="systemName" value="New System"><br>
 				<textarea id="systemDescription">System description</textarea>
+				<!-- Custom graphs -->
 				<table class=graphTable>
 					<tr>
 						<td><input id="ae" type="text" class="graph">tr<u>a</u>p</td>
@@ -119,7 +123,7 @@
 							<textarea id="input" rows="20" cols="50" resize="none">Sample text</textarea>
 						</td>
 						<td>
-							<p id="output" style="width: 100%; height: 100%"></p>
+							<p id="output" style="width: 100%; height: 100%; margin-top: .2em"></p>
 						</td>
 					</tr>
 				</table>
