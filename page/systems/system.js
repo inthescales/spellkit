@@ -15,6 +15,8 @@ export default class System {
 		return this.#graphs[phoneme]
 	};
 
+	/* Import and export */
+
 	to_json() {
 		const dict = {
 			"id": this.id,
@@ -35,14 +37,14 @@ export default class System {
 		}
 
 		if (
-			typeof parse.graphs != object ||
-			typeof parse.ligatures != object ||
-			typeof parse.options != object ||
-			typeof parse.options["use-capitals"] != boolean
+			typeof parse.graphs != "object" ||
+			typeof parse.ligatures != "object" ||
+			typeof parse.options != "object" ||
+			typeof parse.options["use-capitals"] != "boolean"
 		) {
 			return undefined
 		}
 
-		return System(parse.graph, parse.ligatures, parse.options["use-capitals"])
+		return new System("custom", parse.graphs, parse.ligatures, parse.options["use-capitals"])
 	}
 }

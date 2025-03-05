@@ -80,6 +80,15 @@ function set_graphs(system) {
 	}
 }
 
+function set_options(system) {
+	for (const index in option_pairs) {
+		const pair = option_pairs[index]
+		if (pair[0] == "use-capitals") {
+			pair[1].checked = system.use_uppercase
+		}
+	}
+}
+
 function clear() {
 	document.getElementById("systemName").value = ""
 	document.getElementById("systemDescription").value = ""
@@ -123,6 +132,7 @@ function get_custom() {
 
 function customize(system) {
 	set_graphs(system)
+	set_options(system)
 	document.getElementById("systemName").value = ""
 	document.getElementById("systemDescription").value = ""
 }
