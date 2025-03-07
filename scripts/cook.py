@@ -84,12 +84,20 @@ def cook_system(input_path, output_path):
         else:
             out_file.write("let ligatures = []\n\n")
 
+        if "exception-words" in system:
+            out_file.write("let exceptionWords = {\n")
+            for key, value in system["exception-words"].items():
+                out_file.write("\t\"" + key + "\": \"" + value + "\",\n")
+            out_file.write("}\n\n")
+        else:
+            out_file.write("let exceptionWords = []\n\n")
+
         if "capitalize" in system["options"]:
             capitalize = system["options"]["capitalize"]
         else:
             capitalize = False
 
-        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", graph_map, ligatures, {str(capitalize).lower()})\n\n")
+        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", graph_map, ligatures, exceptionWords, {str(capitalize).lower()})\n\n")
 
         out_file.write("export { " + system["id"] + " as system }\n")
 

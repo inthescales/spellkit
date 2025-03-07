@@ -57,6 +57,13 @@
 		"𐑦𐑩": "𐑾",
 		"𐑘𐑵": "𐑿"
 	},
+	"exception-words": {
+		"the": "𐑞",
+		"of": "𐑝",
+		"and": "𐑯",
+		"to": "𐑑",
+		"for": "𐑓"
+	},
 	"options": {
 		"capitalize": false
 	}

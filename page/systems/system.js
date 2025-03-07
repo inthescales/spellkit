@@ -1,9 +1,10 @@
 export default class System {
 	#graphs;
-	constructor(id, graphs, ligatures, use_uppercase) {
+	constructor(id, graphs, ligatures, exceptionWords, use_uppercase) {
 		this.id = id
 		this.#graphs = graphs;
 		this.ligatures = ligatures
+		this.exceptionWords = exceptionWords
 		this.use_uppercase = use_uppercase;
 	};
 
@@ -22,6 +23,7 @@ export default class System {
 			"id": this.id,
 			"graphs": this.#graphs,
 			"ligatures": this.ligatures,
+			"exception-words": this.exceptionWords,
 			"options": {
 				"use-capitals": this.use_uppercase
 			}
@@ -36,15 +38,17 @@ export default class System {
 			return undefined
 		}
 
+		console.log(parse)
 		if (
 			typeof parse.graphs != "object" ||
 			typeof parse.ligatures != "object" ||
+			typeof parse.exceptionWords != "object" ||
 			typeof parse.options != "object" ||
 			typeof parse.options["use-capitals"] != "boolean"
 		) {
 			return undefined
 		}
 
-		return new System("custom", parse.graphs, parse.ligatures, parse.options["use-capitals"])
+		return new System("custom", parse.graphs, parse.ligatures, parse.exceptionWords, parse.options["use-capitals"])
 	}
 }

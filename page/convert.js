@@ -22,6 +22,11 @@ function convert_text(text, system) {
 		return text
 	}
 
+	const exception = system.exceptionWords[text.toLowerCase()]
+	if (exception != undefined) {
+		return exception
+	}
+
 	var value = "";
 	for (const p_index in phonemes) {
 		const phoneme = phonemes[p_index]
