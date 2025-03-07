@@ -1,5 +1,5 @@
 import System from "./systems/system.js"
-import { get_custom, customize } from "./custom.js"
+import { customize } from "./custom.js"
 
 function export_system(system) {
 	const json = system.to_json()
@@ -12,7 +12,7 @@ function export_system(system) {
     a.click();
 }
 
-function import_system(filename) {
+function import_system() {
 	var input = document.createElement("input");
 	input.type = "file"
 	input.addEventListener("change", function(input) { handleImport(this.files[0], customize) } , false)

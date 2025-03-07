@@ -3,7 +3,7 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
 			import { convert } from "./convert.js";
-			import { selectTab, populate_select, get_selected_id } from "./elements.js";
+			import { selectTab, populate_select, get_selected_id, add_row } from "./elements.js";
 			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
 			import { export_system, import_system } from "./transport.js"
@@ -19,6 +19,8 @@
 			globalThis.export_system = export_system
 			globalThis.import_system = import_system
 			globalThis.convert = convert
+
+			globalThis.add_row = add_row
 
 			populate_select("system_select")
 		</script>
@@ -38,7 +40,7 @@
 			<div id="custom" class="tab_content" style="display: none">
 				<button onclick="clear_custom()">clear</button>
 				<button onclick="export_system(get_custom())">export</button>
-				<button onclick="import_system(get_custom())">import</button><br>
+				<button onclick="import_system()">import</button><br>
 				Name: <input type="text" id="systemName" value="New System"><br>
 				<textarea id="systemDescription">System description</textarea>
 				<!-- Custom graphs -->
@@ -113,6 +115,13 @@
 						</td>
 					</tr>
 				</table>
+				<div class="row-addable" id="ligature-container">
+					<div class="ligature-pair" id="template" style="display: none;">
+						<input class="ligature-field" id="target" type="text">
+						<input class="ligature-field" id="value" type="text">
+					</div>
+					<button onclick="add_row('ligature-container')">+ add ligature</button>
+				</div>
 				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
 			</div>
 			<div id="about" class="tab_content" style="display: none">

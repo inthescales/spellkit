@@ -49,4 +49,19 @@ function get_selected_id(select_id) {
 	return sel.value
 }
 
-export { selectTab, populate_select, get_selected_id }
+// Row addables =====================================
+
+function add_row(container_id) {
+	const parent = document.getElementById(container_id)
+	const template = parent.querySelector("#template")
+	const newNode = template.cloneNode(true)
+	newNode.id = ""
+	newNode.style.display = "block"
+
+	const button = parent.querySelector("button")
+	parent.insertBefore(newNode, button)
+
+	return newNode
+}
+
+export { selectTab, populate_select, get_selected_id, add_row }

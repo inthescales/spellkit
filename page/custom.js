@@ -1,4 +1,5 @@
 import System from "./systems/system.js"
+import { add_row } from "./elements.js"
 
 const input_pairs = [
 	["ɑ", document.getElementById("aa")],
@@ -59,6 +60,26 @@ function get_graphs() {
 	return graphs
 }
 
+function get_ligatures() {
+	const container = document.getElementById("ligature-container")
+	const pairs = container.querySelectorAll(".ligature-pair")
+	let ligatures = {}
+
+	for (let index = 0; index < pairs.length; index++) {
+		const pair = pairs[index]
+		const target = pair.querySelector("#target").value
+		const value = pair.querySelector("#value").value
+
+		if (target == "") {
+			continue
+		}
+
+		ligatures[target] = value
+	}
+
+	return ligatures
+}
+
 function get_options() {
 	let graphs = {}
 
@@ -80,6 +101,25 @@ function set_graphs(system) {
 	}
 }
 
+function set_ligatures(system) {
+	const container = document.getElementById("ligature-container")
+	const rows = document.querySelectorAll(".ligature-pair")
+
+	// Remove existing ligature rows
+	for (const row of rows) {
+		if (row.id != "template") {
+			container.removeChild(row)
+		}
+	}
+
+	// Add ligature rows
+	for (const [key, value] of Object.entries(system.ligatures)) {
+		const newPair = add_row("ligature-container")
+		newPair.querySelector("#target").value = key
+		newPair.querySelector("#value").value = value
+	}
+}
+
 function set_options(system) {
 	for (const index in option_pairs) {
 		const pair = option_pairs[index]
@@ -97,6 +137,16 @@ function clear() {
 		const pair = input_pairs[index]
 		pair[1].value = ""
 		pair[1].className = "graph"
+	}
+
+	// Clear ligatures
+
+	const container = document.getElementById("ligature-container")
+	const rows = document.querySelectorAll(".ligature-pair")
+	for (const row of rows) {
+		if (row.id != "template") {
+			container.removeChild(row)
+		}
 	}
 }
 
@@ -119,19 +169,17 @@ function validate() {
 
 function get_custom() {
 	const graph_map = get_graphs()
+	const ligatures = get_ligatures()
 	const options = get_options()
-	const table = document.getElementById("conversion")
 
 	const id = "custom"
-	const graphs = get_graphs()
-	const ligatures = []
-	const use_uppercase = false
 
 	return new System(id, graph_map, ligatures, options["use-capitals"])
 }
 
 function customize(system) {
 	set_graphs(system)
+	set_ligatures(system)
 	set_options(system)
 	document.getElementById("systemName").value = ""
 	document.getElementById("systemDescription").value = ""
