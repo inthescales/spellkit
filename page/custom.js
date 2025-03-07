@@ -80,6 +80,26 @@ function get_ligatures() {
 	return ligatures
 }
 
+function get_exceptions() {
+	const container = document.getElementById("exception-container")
+	const pairs = container.querySelectorAll(".exception-pair")
+	let exceptions = {}
+
+	for (let index = 0; index < pairs.length; index++) {
+		const pair = pairs[index]
+		const target = pair.querySelector("#target").value
+		const value = pair.querySelector("#value").value
+
+		if (target == "") {
+			continue
+		}
+
+		exceptions[target] = value
+	}
+
+	return exceptions
+}
+
 function get_options() {
 	let graphs = {}
 
@@ -120,6 +140,25 @@ function set_ligatures(system) {
 	}
 }
 
+function set_exceptions(system) {
+	const container = document.getElementById("exception-container")
+	const rows = document.querySelectorAll(".exception-pair")
+
+	// Remove existing exception rows
+	for (const row of rows) {
+		if (row.id != "template") {
+			container.removeChild(row)
+		}
+	}
+
+	// Add exception rows
+	for (const [key, value] of Object.entries(system.exceptionWords)) {
+		const newPair = add_row("exception-container")
+		newPair.querySelector("#target").value = key
+		newPair.querySelector("#value").value = value
+	}
+}
+
 function set_options(system) {
 	for (const index in option_pairs) {
 		const pair = option_pairs[index]
@@ -141,11 +180,21 @@ function clear() {
 
 	// Clear ligatures
 
-	const container = document.getElementById("ligature-container")
-	const rows = document.querySelectorAll(".ligature-pair")
-	for (const row of rows) {
+	const ligatureContainer = document.getElementById("ligature-container")
+	const ligatureRows = ligatureContainer.querySelectorAll(".ligature-pair")
+	for (const row of ligatureRows) {
 		if (row.id != "template") {
-			container.removeChild(row)
+			ligatureContainer.removeChild(row)
+		}
+	}
+
+	// Clear exceptions
+
+	const exceptionContainer = document.getElementById("exception-container")
+	const exceptionRows = exceptionContainer.querySelectorAll(".exception-pair")
+	for (const row of exceptionRows) {
+		if (row.id != "template") {
+			exceptionContainer.removeChild(row)
 		}
 	}
 }
@@ -170,16 +219,18 @@ function validate() {
 function get_custom() {
 	const graph_map = get_graphs()
 	const ligatures = get_ligatures()
+	const exceptions = get_exceptions()
 	const options = get_options()
 
 	const id = "custom"
 
-	return new System(id, graph_map, ligatures, options["use-capitals"])
+	return new System(id, graph_map, ligatures, exceptions, options["use-capitals"])
 }
 
 function customize(system) {
 	set_graphs(system)
 	set_ligatures(system)
+	set_exceptions(system)
 	set_options(system)
 	document.getElementById("systemName").value = ""
 	document.getElementById("systemDescription").value = ""

@@ -62,6 +62,12 @@
 	padding: 0.2em;
 }
 
+/* Block customs */
+
+#ligature-container {
+	display: inline-block;
+	vertical-align: top;
+}
 
 .ligature-pair {
 	margin: .2em auto;
@@ -69,6 +75,19 @@
 
 .ligature-field {
 	width: 2em;
+}
+
+#exception-container {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.exception-pair {
+	margin: .2em auto;
+}
+
+.exception-field {
+	width: 5em;
 }
 
 /* Output area */

@@ -38,17 +38,16 @@ export default class System {
 			return undefined
 		}
 
-		console.log(parse)
 		if (
 			typeof parse.graphs != "object" ||
 			typeof parse.ligatures != "object" ||
-			typeof parse.exceptionWords != "object" ||
+			typeof parse["exception-words"] != "object" ||
 			typeof parse.options != "object" ||
 			typeof parse.options["use-capitals"] != "boolean"
 		) {
 			return undefined
 		}
 
-		return new System("custom", parse.graphs, parse.ligatures, parse.exceptionWords, parse.options["use-capitals"])
+		return new System("custom", parse.graphs, parse.ligatures, parse["exception-words"], parse.options["use-capitals"])
 	}
 }

@@ -122,6 +122,14 @@
 					</div>
 					<button onclick="add_row('ligature-container')">+ add ligature</button>
 				</div>
+				<div class="row-addable" id="exception-container">
+					<div class="exception-pair" id="template" style="display: none;">
+						<input class="exception-field" id="target" type="text">
+						<input class="exception-field" id="value" type="text">
+					</div>
+					<button onclick="add_row('exception-container')">+ add exception</button>
+				</div>
+				<br>
 				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
 			</div>
 			<div id="about" class="tab_content" style="display: none">
