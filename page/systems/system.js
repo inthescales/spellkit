@@ -25,7 +25,7 @@ export default class System {
 			"ligatures": this.ligatures,
 			"exception-words": this.exceptionWords,
 			"options": {
-				"use-capitals": this.use_uppercase
+				"preserve-case": this.use_uppercase
 			}
 		}
 
@@ -43,11 +43,11 @@ export default class System {
 			typeof parse.ligatures != "object" ||
 			typeof parse["exception-words"] != "object" ||
 			typeof parse.options != "object" ||
-			typeof parse.options["use-capitals"] != "boolean"
+			typeof parse.options["preserve-case"] != "boolean"
 		) {
 			return undefined
 		}
 
-		return new System("custom", parse.graphs, parse.ligatures, parse["exception-words"], parse.options["use-capitals"])
+		return new System("custom", parse.graphs, parse.ligatures, parse["exception-words"], parse.options["preserve-case"])
 	}
 }

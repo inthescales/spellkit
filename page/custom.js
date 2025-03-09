@@ -46,7 +46,7 @@ const input_pairs = [
 ]
 
 const option_pairs = [
-	["use-capitals", document.getElementById("option-capitals")]
+	["preserve-case", document.getElementById("option-capitalization")]
 ]
 
 function get_graphs() {
@@ -162,7 +162,7 @@ function set_exceptions(system) {
 function set_options(system) {
 	for (const index in option_pairs) {
 		const pair = option_pairs[index]
-		if (pair[0] == "use-capitals") {
+		if (pair[0] == "preserve-case") {
 			pair[1].checked = system.use_uppercase
 		}
 	}
@@ -176,6 +176,15 @@ function clear() {
 		const pair = input_pairs[index]
 		pair[1].value = ""
 		pair[1].className = "graph"
+	}
+
+	// Clear options
+
+	for (const index in option_pairs) {
+		const pair = option_pairs[index]
+		if (pair[0] == "preserve-case") {
+			pair[1].checked = false
+		}
 	}
 
 	// Clear ligatures
@@ -224,7 +233,7 @@ function get_custom() {
 
 	const id = "custom"
 
-	return new System(id, graph_map, ligatures, exceptions, options["use-capitals"])
+	return new System(id, graph_map, ligatures, exceptions, options["preserve-case"])
 }
 
 function customize(system) {
