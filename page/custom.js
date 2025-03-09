@@ -169,8 +169,8 @@ function set_options(system) {
 }
 
 function clear() {
-	document.getElementById("systemName").value = ""
-	document.getElementById("systemDescription").value = ""
+	document.getElementById("system-name").value = ""
+	document.getElementById("system-description").value = ""
 
 	for (const index in input_pairs) {
 		const pair = input_pairs[index]
@@ -232,8 +232,8 @@ function customize(system) {
 	set_ligatures(system)
 	set_exceptions(system)
 	set_options(system)
-	document.getElementById("systemName").value = ""
-	document.getElementById("systemDescription").value = ""
+	document.getElementById("system-name").value = ""
+	document.getElementById("system-description").value = ""
 }
 
 function clear_custom() {

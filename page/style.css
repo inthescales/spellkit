@@ -1,20 +1,25 @@
 .column {
 	width: 800px;
-	margin: auto;
-	border-width: 1px;
-	border-color: black;
-	padding: 2em 0 0;
+	margin: 2em auto;
+	border: 1px solid black;
+}
+
+/* All Elements */
+
+textarea {
+	resize: none;
 }
 
 /* Tabs and selection */
 
-.tab {
+.tab-bar {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  margin-bottom: 16px;
 }
 
-.tab button {
+.tab-bar button {
   background-color: inherit;
   float: left;
   border: none;
@@ -25,15 +30,33 @@
   width: 33.33%;
 }
 
-.tab button:hover {
+.tab-bar button:hover {
   background-color: #ddd;
 }
 
-.tab button.active {
+.tab-bar button.active {
   background-color: #ccc;
 }
 
+.tab-content {
+	margin: 16px;
+}
+
 /* Custom input */
+
+.button-row {
+	margin: 4px 0;
+}
+
+#system-name {
+	width: 40%;
+	margin: 4px 0;
+}
+
+#system-description {
+	width: 100%;
+	margin: 4px 0;
+}
 
 .graph {
 	width: 2em;
@@ -49,17 +72,26 @@
 
 .graphTable {
 	width: 100%;
+	margin: 4px 0;
 	font-size: 13pt;
-	border: 1px solid;
-	border-collapse: collapse;
+	/* border: 1px solid;
+	border-collapse: collapse; */
 }
 
 .graphTable tr, .graphTable td {
-	border: 1px solid;
+	/* border: 1px solid; */
 }
 
 .graphTable td {
 	padding: 0.2em;
+}
+
+.optionTable {
+	margin: 4px 0;
+}
+
+.addable-row {
+	margin: 4px 0 8px;
 }
 
 /* Block customs */
@@ -92,6 +124,12 @@
 
 /* Output area */
 
-#conversionTable td {
+#conversion {
+	margin: 4px 16px 16px;
+}
+
+#conversion-table td {
 	vertical-align: top;
+	padding: 0;
+	margin: 0;
 }

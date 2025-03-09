@@ -4,13 +4,13 @@ import { manifest } from "./systems/list.js"
 
 function selectTab(event, tabName, showConverter) {
 	// Hide tab contents
-	const contents = document.getElementsByClassName("tab_content")
+	const contents = document.getElementsByClassName("tab-content")
 	for (var index = 0; index < contents.length; index++) {
 		contents[index].style.display = "none"
 	}
 
 	// Deactivate all tab buttons
-	const buttons = document.getElementsByClassName("tab_button")
+	const buttons = document.getElementsByClassName("tab-button")
 	for (var index = 0; index < buttons.length; index++) {
 		const button = buttons[index]
 		button.className = buttons[index].className.replace(" active", "")
