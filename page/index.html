@@ -133,7 +133,20 @@
 				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
 			</div>
 			<div id="about" class="tab_content" style="display: none">
-				<p>About text</p>
+				<p>
+					This is a tool for developing systems of spelling for the English language.
+					Based on the sounds of the words, you can describe a system that will determine how they should be spelled. You can then convert texts from the typical spelling to your own.
+				</p>
+				<p>
+					Some notes on its functioning:
+					<ul>
+						<li>Pronunciations come from CMUDict, and so are based on a version of the General American accent.</li>
+						<li>Where words are spelled the same but pronounced differently, such as 'tear' (crying) and 'tear' (ripping), one pronunciation is chosen arbitrarily.</li>
+					</ul>
+				</p>
+				<p>
+					I hope you will enjoy using it.
+				</p>
 			</div>
 			<div id="conversion">
 				<table id="conversionTable">
