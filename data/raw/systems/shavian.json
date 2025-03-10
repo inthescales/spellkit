@@ -1,7 +1,8 @@
 {
 	"id": "shavian",
 	"name": "Shavian",
-	"description": "Shavian Alphabet",
+	"description": "The Shavian alphabet, designed by Ronald Kingsley Read and sponsored by George Bernard Shaw.",
+	"notes": "This implementation lacks naming dots.",
 	"graphs": {
 		"ɑ": "𐑭",
 		"æ": "𐑨",

@@ -1,7 +1,9 @@
 export default class System {
 	#graphs;
-	constructor(id, graphs, ligatures, exceptionWords, use_uppercase) {
+	constructor(id, name, description, graphs, ligatures, exceptionWords, use_uppercase) {
 		this.id = id
+		this.name = name
+		this.description = description
 		this.#graphs = graphs;
 		this.ligatures = ligatures
 		this.exceptionWords = exceptionWords
@@ -21,6 +23,8 @@ export default class System {
 	to_json() {
 		const dict = {
 			"id": this.id,
+			"name": this.name,
+			"description": this.description,
 			"graphs": this.#graphs,
 			"ligatures": this.ligatures,
 			"exception-words": this.exceptionWords,
@@ -48,6 +52,6 @@ export default class System {
 			return undefined
 		}
 
-		return new System("custom", parse.graphs, parse.ligatures, parse["exception-words"], parse.options["preserve-case"])
+		return new System("custom", parse.name, parse.description, parse.graphs, parse.ligatures, parse["exception-words"], parse.options["preserve-case"])
 	}
 }

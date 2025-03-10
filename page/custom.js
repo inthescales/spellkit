@@ -226,6 +226,9 @@ function validate() {
 // EXPORTS =========================================
 
 function get_custom() {
+	const name = document.getElementById("system-name").value
+	const description = document.getElementById("system-description").value
+
 	const graph_map = get_graphs()
 	const ligatures = get_ligatures()
 	const exceptions = get_exceptions()
@@ -233,7 +236,7 @@ function get_custom() {
 
 	const id = "custom"
 
-	return new System(id, graph_map, ligatures, exceptions, options["preserve-case"])
+	return new System(id, name, description, graph_map, ligatures, exceptions, options["preserve-case"])
 }
 
 function customize(system) {
@@ -241,8 +244,8 @@ function customize(system) {
 	set_ligatures(system)
 	set_exceptions(system)
 	set_options(system)
-	document.getElementById("system-name").value = ""
-	document.getElementById("system-description").value = ""
+	document.getElementById("system-name").value = system.name
+	document.getElementById("system-description").value = system.description
 }
 
 function clear_custom() {
