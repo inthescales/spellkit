@@ -97,7 +97,9 @@ def cook_system(input_path, output_path):
         else:
             capitalize = False
 
-        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", \"{system["name"]}\", \"{system["description"]}\", graph_map, ligatures, exceptionWords, {str(capitalize).lower()})\n\n")
+        name = system["name"].replace("\"", "\\\"")
+        description = system["description"].replace("\"", "\\\"")
+        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", \"{name}\", \"{description}\", graph_map, ligatures, exceptionWords, {str(capitalize).lower()})\n\n")
 
         out_file.write("export { " + system["id"] + " as system }\n")
 
@@ -111,7 +113,9 @@ def write_system_list(list):
         out_file.write("\n")
         out_file.write("const manifest = [\n")
         for filename, system in system_list:
-            out_file.write("\t[\"" + system["id"] + "\", \"" + system["name"] + "\", \"" + system["description"] + "\"],\n")
+            name = system["name"].replace("\"", "\\\"")
+            description = system["description"].replace("\"", "\\\"")
+            out_file.write("\t[\"" + system["id"] + "\", \"" + name + "\", \"" + description + "\"],\n")
         out_file.write("]\n\n")
 
         out_file.write("const systems = [\n")
