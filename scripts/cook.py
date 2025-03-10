@@ -92,14 +92,14 @@ def cook_system(input_path, output_path):
         else:
             out_file.write("let exceptionWords = []\n\n")
 
-        if "capitalize" in system["options"]:
-            capitalize = system["options"]["capitalize"]
+        if "preserve-case" in system["options"]:
+            preserve_case = system["options"]["preserve-case"]
         else:
-            capitalize = False
+            preserve_case = False
 
         name = system["name"].replace("\"", "\\\"")
         description = system["description"].replace("\"", "\\\"")
-        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", \"{name}\", \"{description}\", graph_map, ligatures, exceptionWords, {str(capitalize).lower()})\n\n")
+        out_file.write(f"const {system["id"]} = new System(\"{system["id"]}\", \"{name}\", \"{description}\", graph_map, ligatures, exceptionWords, {str(preserve_case).lower()})\n\n")
 
         out_file.write("export { " + system["id"] + " as system }\n")
 
