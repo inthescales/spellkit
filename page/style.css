@@ -16,19 +16,21 @@ body {
 }
 
 .question-circle {
-	width: 1.25em;
-	height: 1.25em;
+	width: 1em;
+	height: 1em;
 	border: 1px solid black;
 	border-radius: 50%;
 	text-align: center;
 	position: relative;
 	display: inline-block;
+	margin-left: .1em;
 }
 
 .question-mark {
 	color: darkslategray;
+	font-size: 16;
 	font-weight: bold;
-	line-height: 1.4em;
+	line-height: 1.2em;
 }
 
 .question-circle .tooltip {
@@ -53,7 +55,7 @@ body {
 .question-circle .tooltip::before {
   content: " ";
   position: absolute;
-  top: .6em;
+  top: .4em;
   left: -16px;
   border-width: 8px;
   border-style: solid;
@@ -63,7 +65,7 @@ body {
 .question-circle .tooltip::after {
   content: " ";
   position: absolute;
-  top: .6em;
+  top: .4em;
   left: -14.75px;
   border-width: 8px;
   border-style: solid;
