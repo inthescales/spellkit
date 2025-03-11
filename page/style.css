@@ -1,7 +1,77 @@
+body {
+	line-height: 120%;
+}
+
 .column {
 	width: 800px;
 	margin: 2em auto;
 	border: 1px solid black;
+}
+
+/* Help tooltips */
+
+.label {
+	font-size: 16;
+	font-weight: bold;
+}
+
+.question-circle {
+	width: 1.25em;
+	height: 1.25em;
+	border: 1px solid black;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+}
+
+.question-mark {
+	color: darkslategray;
+	font-weight: bold;
+	line-height: 1.4em;
+}
+
+.question-circle .tooltip {
+  visibility: hidden;
+  width: 20em;
+  padding: 10px;
+  background-color: white;
+  color: black;
+
+  border: 1px solid darkslategray;
+  border-radius: 6px;
+
+  text-align: left;
+  box-shadow: 0px 3px 5px 1px gray;
+  top: -.5em;
+  left: 2em;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.question-circle .tooltip::before {
+  content: " ";
+  position: absolute;
+  top: .6em;
+  left: -16px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent darkslategray transparent transparent;
+}
+
+.question-circle .tooltip::after {
+  content: " ";
+  position: absolute;
+  top: .6em;
+  left: -14.75px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+
+.question-circle:hover .tooltip {
+  visibility: visible;
 }
 
 /* All Elements */

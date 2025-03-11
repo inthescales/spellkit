@@ -46,6 +46,13 @@
 				<input type="text" id="system-name" placeholder="System Name"><br>
 				<textarea id="system-description" placeholder="System description"></textarea>
 				<!-- Custom graphs -->
+				<div class="label-group">
+					<span class="label">sounds</span>
+					<div class="question-circle">
+						<span class="question-mark">?</span>
+						<span class="tooltip">The sound made by the highlighted letters in the example words will be represented by the characters you enter here.</span>
+					</div>
+				</div>
 				<table class=graphTable>
 					<tr>
 						<td><input id="ae" type="text" class="graph">tr<u>a</u>p</td>
@@ -108,15 +115,10 @@
 						<td><input id="zh" type="text" class="graph">bei<u>ge</u></td>
 					</tr>
 				</table>
-				<!-- Custom options -->
-				<table class="optionTable">
-					<tr>
-						<td>
-						  <input type="checkbox" id="option-capitalization">
-						  <label for="option-capitalization"> Preserve capitalization</label>
-						</td>
-					</tr>
-				</table>
+				<!-- Exception -->
+				<div class="label-group">
+					<span class="label">exceptions</span>
+				</div>
 				<div class="addable-row">
 					<div class="row-addable" id="ligature-container">
 						<div class="ligature-pair" id="template" style="display: none;">
@@ -124,7 +126,11 @@
 							 &#8594; 
 							<input class="ligature-field" id="value" type="text">
 						</div>
-						<button onclick="add_row('ligature-container')">+ add ligature</button>
+						<button onclick="add_row('ligature-container')">+ ligature</button>
+						<div class="question-circle">
+							<span class="question-mark">?</span>
+							<span class="tooltip">Replaces any instance of one sequence of characters with another.</span>
+						</div>
 					</div>
 					<div class="row-addable" id="exception-container">
 						<div class="exception-pair" id="template" style="display: none;">
@@ -132,10 +138,29 @@
 							 &#8594; 
 							<input class="exception-field" id="value" type="text">
 						</div>
-						<button onclick="add_row('exception-container')">+ add exception</button>
+						<button onclick="add_row('exception-container')">+ word exception</button>
+						<div class="question-circle">
+							<span class="question-mark">?</span>
+							<span class="tooltip">Converts words to the forms given here, instead of by sound.</span>
+						</div>
 					</div>
 				</div>
-				<br>
+				<!-- Custom options -->
+				<div class="label-group">
+					<span class="label">options</span>
+				</div>
+				<table class="optionTable">
+					<tr>
+						<td>
+						  <input type="checkbox" id="option-capitalization">
+						  <label for="option-capitalization"> Preserve capitalization</label>
+							<div class="question-circle">
+								<span class="question-mark">?</span>
+								<span class="tooltip">Attempts to match the capitalization pattern of the input text when converting words. <br><br>Note that characters outside of the Latin alphabet may not have valid capitalized forms.</span>
+							</div>
+						</td>
+					</tr>
+				</table>
 				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
 			</div>
 			<div id="about" class="tab-content" style="display: none">
@@ -155,6 +180,9 @@
 				</p>
 				<p>
 					I hope you will enjoy using it.
+				</p>
+				<p>
+					&ndash; Robin
 				</p>
 			</div>
 			<div id="conversion">
