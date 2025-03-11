@@ -3,7 +3,7 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
 			import { convert } from "./convert.js";
-			import { selectTab, populate_select, get_selected_id, add_row } from "./elements.js";
+			import { selectTab, populate_select, get_selected_id, add_row, remove_row } from "./elements.js";
 			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
 			import { export_system, import_system } from "./transport.js"
@@ -21,6 +21,7 @@
 			globalThis.convert = convert
 
 			globalThis.add_row = add_row
+			globalThis.remove_row = remove_row
 
 			populate_select("system_select")
 		</script>
@@ -125,8 +126,9 @@
 							<input class="ligature-field" id="target" type="text">
 							 &#8594; 
 							<input class="ligature-field" id="value" type="text">
+							<button class="x-remove" onclick="remove_row(this, 'ligature-container')">X</button>
 						</div>
-						<button onclick="add_row('ligature-container')">+ ligature</button>
+						<button class="add-row" onclick="add_row('ligature-container')">+ ligature</button>
 						<div class="question-circle">
 							<span class="question-mark">?</span>
 							<span class="tooltip">Replaces any instance of one sequence of characters with another.</span>
@@ -137,8 +139,9 @@
 							<input class="exception-field" id="target" type="text">
 							 &#8594; 
 							<input class="exception-field" id="value" type="text">
+							<button class="x-remove" onclick="remove_row(this, 'exception-container')">X</button>
 						</div>
-						<button onclick="add_row('exception-container')">+ word exception</button>
+						<button class="add-row" onclick="add_row('exception-container')">+ word exception</button>
 						<div class="question-circle">
 							<span class="question-mark">?</span>
 							<span class="tooltip">Converts a specific word to the form given here, instead of by sound.</span>

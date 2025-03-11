@@ -58,10 +58,15 @@ function add_row(container_id) {
 	newNode.id = ""
 	newNode.style.display = "block"
 
-	const button = parent.querySelector("button")
+	const button = parent.querySelector(".add-row")
 	parent.insertBefore(newNode, button)
 
 	return newNode
 }
 
-export { selectTab, populate_select, get_selected_id, add_row }
+function remove_row(button, container_id) {
+	const container = document.getElementById(container_id)
+	container.removeChild(button.parentNode)
+}
+
+export { selectTab, populate_select, get_selected_id, add_row, remove_row }

@@ -178,7 +178,7 @@ textarea {
 }
 
 .ligature-pair {
-	margin: .2em auto;
+	margin: .2em auto .4em;
 }
 
 .ligature-field {
@@ -195,11 +195,22 @@ textarea {
 }
 
 .exception-pair {
-	margin: .2em auto;
+	margin: .2em auto .4em;
 }
 
 .exception-field {
 	width: 4em;
+}
+
+.x-remove {
+	border: none;
+	background-color: white;
+	vertical-align: center;
+	color: darkslategray;
+}
+
+.x-remove:hover {
+	color: red;
 }
 
 /* Output area */
