@@ -58,9 +58,9 @@ function convert_ligatures(text, system) {
 // in the output field.
 function convert(system, conversionBlockID) {
 	const conversion = document.getElementById(conversionBlockID)
-	let input_field = conversion.querySelector(".conversion-input")
-	let output_field = conversion.querySelector(".conversion-output")
-	let placeholder_field = conversion.querySelector(".conversion-output-placeholder")
+	const input_field = conversion.querySelector(".conversion-input")
+	const output_field = conversion.querySelector(".conversion-output")
+	const placeholder_field = conversion.querySelector(".conversion-output-placeholder")
 
 	let in_text = input_field.value;
 	var out_text = "";
@@ -90,4 +90,15 @@ function convert(system, conversionBlockID) {
 	}
 }
 
-export { convert };
+function clear_conversion(conversionBlockID) {
+	const conversion = document.getElementById(conversionBlockID)
+	const input_field = conversion.querySelector(".conversion-input")
+	const output_field = conversion.querySelector(".conversion-output")
+	const placeholder_field = conversion.querySelector(".conversion-output-placeholder")
+
+	input_field.value = ""
+	output_field.textContent = ""
+	placeholder_field.style.display = "inline"
+}
+
+export { convert, clear_conversion };

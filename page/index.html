@@ -2,7 +2,7 @@
 	<head>
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
-			import { convert } from "./convert.js";
+			import { convert, clear_conversion } from "./convert.js";
 			import { selectTab, populate_select, get_selected_id, add_row, remove_row } from "./elements.js";
 			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
@@ -19,6 +19,7 @@
 			globalThis.export_system = export_system
 			globalThis.import_system = import_system
 			globalThis.convert = convert
+			globalThis.clear_conversion = clear_conversion
 
 			globalThis.add_row = add_row
 			globalThis.remove_row = remove_row
@@ -35,8 +36,11 @@
 			</div>
 			<div id="presets" class="tab-content">
 				<select id="system_select" style="width: 200px;"></select>
-				<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
+				<div class="button-row">
+					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
+					<button id="clear" onclick="clear_conversion('presets-conversion')">clear</button>
+				</div>
 				<div id="presets-conversion" class="conversion">
 					<div class="conversion-table">
 						<textarea class="conversion-input" placeholder="Enter text here..."></textarea>
@@ -173,7 +177,10 @@
 						</td>
 					</tr>
 				</table>
-				<button id="convert" onclick="function exec() { convert(get_custom(), 'custom-conversion') }; if_valid(exec)">convert</button>
+				<div class="button-row">
+					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'custom-conversion')">convert</button>
+					<button id="clear" onclick="clear_conversion('custom-conversion')">clear</button>
+				</div>
 				<div id="custom-conversion" class="conversion">
 					<div class="conversion-table">
 						<textarea class="conversion-input" placeholder="Enter text here..."></textarea>
