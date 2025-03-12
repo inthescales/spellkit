@@ -35,8 +35,17 @@
 			</div>
 			<div id="presets" class="tab-content">
 				<select id="system_select" style="width: 200px;"></select>
-				<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')))">convert</button>
+				<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
+				<div id="presets-conversion" class="conversion">
+					<div class="conversion-table">
+						<textarea class="conversion-input" placeholder="Enter text here..."></textarea>
+						<div class="conversion-output-container">
+							<p class="conversion-output"></p>
+							<p class="conversion-output-placeholder">...and conversion will appear here</p>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="custom" class="tab-content" style="display: none">
 				<div class="button-row">
@@ -164,17 +173,26 @@
 						</td>
 					</tr>
 				</table>
-				<button id="convert" onclick="function exec() { convert(get_custom()) }; if_valid(exec)">convert</button>
+				<button id="convert" onclick="function exec() { convert(get_custom(), 'custom-conversion') }; if_valid(exec)">convert</button>
+				<div id="custom-conversion" class="conversion">
+					<div class="conversion-table">
+						<textarea class="conversion-input" placeholder="Enter text here..."></textarea>
+						<div class="conversion-output-container">
+							<p class="conversion-output"></p>
+							<p class="conversion-output-placeholder">...and conversion will appear here</p>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="about" class="tab-content" style="display: none">
 				<p>
 					This is a tool for developing systems of spelling for the English language.
-					Based on the sounds of the words, you can describe a system that will determine how they should be spelled. You can then convert texts from the typical spelling to your own.
+					Based on the sounds of the words, you can describe a system that will determine how they should be spelled. You can then convert texts from the usual spelling to your own.
 				</p>
 				<p>
 					Some notes on its functioning:
 					<ul>
-						<li>Pronunciations come from CMUDict, and so are based on a version of the General American accent.</li>
+						<li>Pronunciations come from The CMU Prouncing Dictionary, and so are based on a version of the General American accent.</li>
 						<li>Where words are spelled the same but pronounced differently, such as 'tear' (crying) and 'tear' (ripping), one pronunciation is chosen arbitrarily.</li>
 					</ul>
 				</p>
@@ -187,18 +205,6 @@
 				<p>
 					&ndash; Robin
 				</p>
-			</div>
-			<div id="conversion">
-				<table id="conversion-table">
-					<tr>
-						<td>
-							<textarea id="input" resize="none">Sample text</textarea>
-						</td>
-						<td>
-							<p id="output"></p>
-						</td>
-					</tr>
-				</table>
 			</div>
 		</div>
 	</body>

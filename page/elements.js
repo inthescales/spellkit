@@ -19,14 +19,6 @@ function selectTab(event, tabName, showConverter) {
 	// Show current tab contents and activate tab
 	document.getElementById(tabName).style.display = "block"
 	document.getElementById(tabName + "Button").className += " active"
-
-	// Toggle conversion table
-	const table = document.getElementById("conversion")
-	if (showConverter) {
-		table.style.display = "block"
-	} else {
-		table.style.display = "none"
-	}
 }
 
 // System preset selector ============================

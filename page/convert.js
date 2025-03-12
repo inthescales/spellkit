@@ -56,9 +56,11 @@ function convert_ligatures(text, system) {
 
 // Convert the text in the input field into phonetic form, and display it
 // in the output field.
-function convert(system) {
-	let input_field = document.getElementById("input");
-	let output_field = document.getElementById("output");
+function convert(system, conversionBlockID) {
+	const conversion = document.getElementById(conversionBlockID)
+	let input_field = conversion.querySelector(".conversion-input")
+	let output_field = conversion.querySelector(".conversion-output")
+	let placeholder_field = conversion.querySelector(".conversion-output-placeholder")
 
 	let in_text = input_field.value;
 	var out_text = "";
@@ -80,6 +82,12 @@ function convert(system) {
 	}
 
 	output_field.textContent = out_text;
+
+	if (out_text != "") {
+		placeholder_field.style.display = "none"
+	} else {
+		placeholder_field.style.display = "inline"
+	}
 }
 
 export { convert };
