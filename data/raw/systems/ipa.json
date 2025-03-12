@@ -1,7 +1,7 @@
 {
 	"id": "ipa",
 	"name": "IPA",
-	"description": "The International Phonetic Alphabet",
+	"description": "The International Phonetic Alphabet. A widely-used set of symbols for representing sounds across languages.",
 	"graphs": {
 		"ɑ": "ɑ",
 		"æ": "æ",

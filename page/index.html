@@ -3,13 +3,14 @@
 		<link rel="stylesheet" href="style.css">
 		<script type="module">
 			import { convert, clear_conversion } from "./convert.js";
-			import { selectTab, populate_select, get_selected_id, add_row, remove_row } from "./elements.js";
+			import { selectTab, populate_select, did_select, get_selected_id, add_row, remove_row } from "./elements.js";
 			import { if_valid, get_custom, customize, clear_custom } from "./custom.js"
 			import { system_with_id } from "./state.js"
 			import { export_system, import_system } from "./transport.js"
 
 			globalThis.selectTab = selectTab
 
+			globalThis.did_select = did_select
 			globalThis.get_selected_id = get_selected_id
 			globalThis.system_with_id = system_with_id
 			globalThis.if_valid = if_valid
@@ -35,8 +36,9 @@
 			  <button class="tab-button" id="aboutButton" onclick="selectTab(event, 'about', false)">About</button>
 			</div>
 			<div id="presets" class="tab-content">
-				<select id="system_select" style="width: 200px;"></select>
+				<select id="system_select" style="width: 200px;" onchange="did_select(system_with_id(get_selected_id('system_select')))"></select>
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
+				<p id="preset-description"></p>
 				<div class="button-row">
 					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
 					<button id="clear" onclick="clear_conversion('presets-conversion')">clear</button>

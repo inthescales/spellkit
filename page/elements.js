@@ -26,19 +26,30 @@ function selectTab(event, tabName, showConverter) {
 // Populates the system selector from the system list
 function populate_select(select_id) {
 	const sel = document.getElementById(select_id)
-	for (const index in manifest) {
-		const system = manifest[index]
+	const sorted = manifest
+	sorted.sort((a, b) => a[1].localeCompare(b[1]))
+
+	for (const index in sorted) {
+		const system = sorted[index]
 		var option = document.createElement("option")
 		option.value = system[0]
 		option.text = system[1]
 		sel.add(option)
 	}
+
+	const descriptionField = document.getElementById("preset-description")
+	descriptionField.textContent = sorted[0][2]
 }
 
 // Returns the currently selected element of the given select element
 function get_selected_id(select_id) {
 	const sel = document.getElementById(select_id)
 	return sel.value
+}
+
+function did_select(system) {
+	const descriptionField = document.getElementById("preset-description")
+	descriptionField.textContent = system.description
 }
 
 // Row addables =====================================
@@ -61,4 +72,4 @@ function remove_row(button, container_id) {
 	container.removeChild(button.parentNode)
 }
 
-export { selectTab, populate_select, get_selected_id, add_row, remove_row }
+export { selectTab, populate_select, get_selected_id, did_select, add_row, remove_row }
