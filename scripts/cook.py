@@ -82,7 +82,7 @@ def cook_system(input_path, output_path):
                 out_file.write("\t\"" + key + "\": \"" + value + "\",\n")
             out_file.write("}\n\n")
         else:
-            out_file.write("let ligatures = []\n\n")
+            out_file.write("let ligatures = {}\n\n")
 
         if "exception-words" in system:
             out_file.write("let exceptionWords = {\n")
@@ -90,7 +90,7 @@ def cook_system(input_path, output_path):
                 out_file.write("\t\"" + key + "\": \"" + value + "\",\n")
             out_file.write("}\n\n")
         else:
-            out_file.write("let exceptionWords = []\n\n")
+            out_file.write("let exceptionWords = {}\n\n")
 
         if "preserve-case" in system["options"]:
             preserve_case = system["options"]["preserve-case"]

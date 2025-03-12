@@ -21,7 +21,7 @@ function convert_text(text, system) {
 	if (phonemes === undefined) {
 		return text
 	}
-
+	
 	const exception = system.exceptionWords[text.toLowerCase()]
 	if (exception != undefined) {
 		return exception
