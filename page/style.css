@@ -294,3 +294,7 @@ textarea {
 	color: slategray;
 	white-space: pre-line;
 }
+
+.unknown {
+	color: #8c1d4a;
+}

@@ -38,7 +38,7 @@
 			<div id="presets" class="tab-content">
 				<select id="system_select" style="width: 200px;" onchange="did_select(system_with_id(get_selected_id('system_select')))"></select>
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
-				<p id="preset-description"></p>
+				<p id="preset-description">...</p>
 				<div class="divider"></div>
 				<div class="button-row">
 					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
@@ -205,6 +205,7 @@
 					<ul>
 						<li>Pronunciations come from The CMU Prouncing Dictionary, and so are based on a version of the General American accent.</li>
 						<li>Where words are spelled the same but pronounced differently, such as 'tear' (crying) and 'tear' (ripping), one pronunciation is chosen arbitrarily.</li>
+						<li>Unrecognized words will appear in <span class="unknown">purple</span>.</li>
 					</ul>
 				</p>
 				<p>

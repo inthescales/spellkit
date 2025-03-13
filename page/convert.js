@@ -19,9 +19,13 @@ function convert_word(word, system) {
 function convert_text(text, system) {
 	const phonemes = cmudict[text.toUpperCase()];
 	if (phonemes === undefined) {
-		return text
+		if (text == " ") {
+			return text
+		} else {
+			return "<span class='unknown'>" + text + "</span>"
+		}
 	}
-	
+
 	const exception = system.exceptionWords[text.toLowerCase()]
 	if (exception != undefined) {
 		return exception
@@ -81,7 +85,7 @@ function convert(system, conversionBlockID) {
 		out_text += convert_word(word, system);
 	}
 
-	output_field.textContent = out_text;
+	output_field.innerHTML = out_text
 
 	if (out_text != "") {
 		placeholder_field.style.display = "none"
