@@ -1,7 +1,7 @@
 {
     "id": "shields_twain",
     "name": "Shields-Twain",
-    "description": "Based on \"A Plan for the Improvement of English Spelling\" by M. J. Shields. Sometimes attributed to Mark Twain.",
+    "description": "Based on \"A Plan for the Improvement of English Spelling\" by M. J. Shields, sometimes attributed to Mark Twain.",
     "graphs": {
         "ɑ": "o",
         "æ": "a",
