@@ -55,16 +55,18 @@
 				</div>
 			</div>
 			<div id="custom" class="tab-content" style="display: none">
-				<div class="button-row">
-					<button onclick="import_system()">import</button>
-					<button onclick="export_system(get_custom())">export</button>
-					<button onclick="clear_custom()">clear</button>
+				<div class="custom-info">
+					<div class="button-row">
+						<button onclick="import_system()">import</button>
+						<button onclick="export_system(get_custom())">export</button>
+						<button onclick="clear_custom()">clear</button>
+					</div>
+					<input type="text" id="system-name" placeholder="System Name"><br>
+					<textarea id="system-description" placeholder="System description"></textarea>
 				</div>
-				<input type="text" id="system-name" placeholder="System Name"><br>
-				<textarea id="system-description" placeholder="System description"></textarea>
 				<!-- Custom graphs -->
 				<div class="label-group">
-					<span class="label">sounds</span>
+					<span class="section-label">sounds</span>
 					<div class="question-circle">
 						<span class="question-mark">?</span>
 						<span class="tooltip">The sound made by the highlighted letters in the example words will be represented by the characters you enter here.</span>
@@ -134,7 +136,7 @@
 				</table>
 				<!-- Exception -->
 				<div class="label-group">
-					<span class="label">exceptions</span>
+					<span class="section-label">exceptions</span>
 				</div>
 				<div class="addable-row">
 					<div class="row-addable" id="ligature-container">
@@ -166,7 +168,7 @@
 				</div>
 				<!-- Custom options -->
 				<div class="label-group">
-					<span class="label">options</span>
+					<span class="section-label">options</span>
 				</div>
 				<table class="optionTable">
 					<tr>

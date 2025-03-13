@@ -69,6 +69,10 @@ textarea {
 	margin-right: 4px;
 }
 
+.custom-info {
+	margin: 4px 4px 8px;
+}
+
 #system-name {
 	width: 40%;
 	margin: 4px 0;
@@ -196,9 +200,10 @@ textarea {
 
 /* Help tooltips */
 
-.label {
+.section-label {
 	font-size: 16;
 	font-weight: bold;
+	margin-left: 4px;
 }
 
 .question-circle {
