@@ -164,6 +164,7 @@ textarea {
 	display: inline-block;
 	vertical-align: middle;
   transform: translateY(-1px);
+  cursor: pointer;
 
 	border:none;
 	background-color: white;
@@ -283,6 +284,7 @@ textarea {
 
 .conversion-input {
 	min-height: 10em;
+	margin: 0;
 }
 
 .conversion-output-container {
