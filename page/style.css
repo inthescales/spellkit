@@ -4,7 +4,7 @@ body {
 
 .column {
 	width: 800px;
-	margin: 2em auto;
+	margin: 32px auto;
 	border: 1px solid black;
 }
 
@@ -84,13 +84,13 @@ textarea {
 }
 
 .graph {
-	width: 2em;
-	margin-right: .4em;
+	width: 27px;
+	margin-right: 6px;
 }
 
 .graph-error {
-	width: 2em;
-	margin-right: .4em;
+	width: 27px;
+	margin-right: 6px;
 	border: 2px solid red;
 	border-radius: 2px;
 }
@@ -108,7 +108,7 @@ textarea {
 }
 
 .graphTable td {
-	padding: 0.2em;
+	padding: 3px
 }
 
 .optionTable {
@@ -124,35 +124,35 @@ textarea {
 #ligature-container {
 	display: inline-block;
 	vertical-align: top;
-	margin: .25em;
+	margin: 4px;
 	border: 1px solid gray;
-	border-radius: .5em;
-	padding: .5em;
+	border-radius: 8px;
+	padding: 8px;
 }
 
 .ligature-pair {
-	margin: .2em auto .4em;
+	margin: 4px auto 8px;
 }
 
 .ligature-field {
-	width: 2.5em;
+	width: 40;
 }
 
 #exception-container {
 	display: inline-block;
 	vertical-align: top;
-	margin: .25em;
+	margin: 4px;
 	border: 1px solid gray;
-	border-radius: .5em;
-	padding: .5em;
+	border-radius: 8px;
+	padding: 8px;
 }
 
 .exception-pair {
-	margin: .2em auto .4em;
+	margin: 4px auto 8px;
 }
 
 .exception-field {
-	width: 4em;
+	width: 64px;
 }
 
 .x-remove {
@@ -208,26 +208,26 @@ textarea {
 }
 
 .question-circle {
-	width: 1em;
-	height: 1em;
+	width: 16px;
+	height: 16px;
 	border: 1px solid black;
 	border-radius: 50%;
 	text-align: center;
 	position: relative;
 	display: inline-block;
-	margin-left: .1em;
+	margin-left: 2px;
 }
 
 .question-mark {
 	color: darkslategray;
 	font-size: 16;
 	font-weight: bold;
-	line-height: 1.2em;
+	line-height: 19px;
 }
 
 .question-circle .tooltip {
   visibility: hidden;
-  width: 20em;
+  width: 320px;
   padding: 10px;
   background-color: white;
   color: black;
@@ -237,8 +237,8 @@ textarea {
 
   text-align: left;
   box-shadow: 0px 3px 5px 1px gray;
-  top: -.5em;
-  left: 2em;
+  top: -8px;
+  left: 32px;
  
   position: absolute;
   z-index: 1;
@@ -247,7 +247,7 @@ textarea {
 .question-circle .tooltip::before {
   content: " ";
   position: absolute;
-  top: .4em;
+  top: 8px;
   left: -16px;
   border-width: 8px;
   border-style: solid;
@@ -257,7 +257,7 @@ textarea {
 .question-circle .tooltip::after {
   content: " ";
   position: absolute;
-  top: .4em;
+  top: 8px;
   left: -14.75px;
   border-width: 8px;
   border-style: solid;
@@ -283,7 +283,7 @@ textarea {
 }
 
 .conversion-input {
-	min-height: 10em;
+	min-height: 160px;
 	margin: 0;
 }
 
@@ -292,16 +292,22 @@ textarea {
 }
 
 .conversion-output {
-	margin: .3em;
+	margin: 4px;
 	white-space: pre-line;
 }
 
 .conversion-output-placeholder {
-	margin: .3em;
+	margin: 4px;
 	color: slategray;
 	white-space: pre-line;
 }
 
 .unknown {
 	color: #8c1d4a;
+}
+
+/* About page */
+
+#about ul li:not(:last-child) {
+	margin-bottom: 2px;
 }
