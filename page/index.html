@@ -39,6 +39,7 @@
 				<select id="system_select" style="width: 200px;" onchange="did_select(system_with_id(get_selected_id('system_select')))"></select>
 				<button id="customize" onclick="customize(system_with_id(get_selected_id('system_select'))); selectTab(event, 'custom', true)">customize</button>
 				<p id="preset-description"></p>
+				<div class="divider"></div>
 				<div class="button-row">
 					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'presets-conversion')">convert</button>
 					<button id="clear" onclick="clear_conversion('presets-conversion')">clear</button>
@@ -179,6 +180,7 @@
 						</td>
 					</tr>
 				</table>
+				<div class="divider"></div>
 				<div class="button-row">
 					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'custom-conversion')">convert</button>
 					<button id="clear" onclick="clear_conversion('custom-conversion')">clear</button>

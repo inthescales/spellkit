@@ -8,72 +8,11 @@ body {
 	border: 1px solid black;
 }
 
-/* Help tooltips */
-
-.label {
-	font-size: 16;
-	font-weight: bold;
-}
-
-.question-circle {
-	width: 1em;
-	height: 1em;
-	border: 1px solid black;
-	border-radius: 50%;
-	text-align: center;
-	position: relative;
-	display: inline-block;
-	margin-left: .1em;
-}
-
-.question-mark {
-	color: darkslategray;
-	font-size: 16;
-	font-weight: bold;
-	line-height: 1.2em;
-}
-
-.question-circle .tooltip {
-  visibility: hidden;
-  width: 20em;
-  padding: 10px;
-  background-color: white;
-  color: black;
-
-  border: 1px solid darkslategray;
-  border-radius: 6px;
-
-  text-align: left;
-  box-shadow: 0px 3px 5px 1px gray;
-  top: -.5em;
-  left: 2em;
- 
-  position: absolute;
-  z-index: 1;
-}
-
-.question-circle .tooltip::before {
-  content: " ";
-  position: absolute;
-  top: .4em;
-  left: -16px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent darkslategray transparent transparent;
-}
-
-.question-circle .tooltip::after {
-  content: " ";
-  position: absolute;
-  top: .4em;
-  left: -14.75px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent white transparent transparent;
-}
-
-.question-circle:hover .tooltip {
-  visibility: visible;
+.divider {
+	height: 1px;
+	width: 100%;
+	background-color: lightslategray;
+	margin: 16px 0;
 }
 
 /* Universal element styles */
@@ -123,7 +62,11 @@ textarea {
 /* Custom input */
 
 .button-row {
-	margin: 4px 0;
+	margin: 8px 0;
+}
+
+.button-row button:not(:last-child) {
+	margin-right: 4px;
 }
 
 #system-name {
@@ -249,6 +192,74 @@ textarea {
 	     red 50%,
 	     rgba(0,0,0,0) calc(50% + 1.25px),
 	     rgba(0,0,0,0) 100%);
+}
+
+/* Help tooltips */
+
+.label {
+	font-size: 16;
+	font-weight: bold;
+}
+
+.question-circle {
+	width: 1em;
+	height: 1em;
+	border: 1px solid black;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	margin-left: .1em;
+}
+
+.question-mark {
+	color: darkslategray;
+	font-size: 16;
+	font-weight: bold;
+	line-height: 1.2em;
+}
+
+.question-circle .tooltip {
+  visibility: hidden;
+  width: 20em;
+  padding: 10px;
+  background-color: white;
+  color: black;
+
+  border: 1px solid darkslategray;
+  border-radius: 6px;
+
+  text-align: left;
+  box-shadow: 0px 3px 5px 1px gray;
+  top: -.5em;
+  left: 2em;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.question-circle .tooltip::before {
+  content: " ";
+  position: absolute;
+  top: .4em;
+  left: -16px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent darkslategray transparent transparent;
+}
+
+.question-circle .tooltip::after {
+  content: " ";
+  position: absolute;
+  top: .4em;
+  left: -14.75px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+
+.question-circle:hover .tooltip {
+  visibility: visible;
 }
 
 /* Output area */
