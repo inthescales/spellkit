@@ -60,13 +60,18 @@ os.mkdir(cooked_path + "systems/")
 system_list = []
 
 def cook_system(input_path, output_path):
-    with open(output_path, mode='w') as out_file, \
-         open(input_path, mode='r') as in_file:
-
+    with open(input_path, mode='r') as in_file:
         system = json.load(in_file)
-        filename = file.split(".")[0]
 
+    if "hidden" in system["options"] and system["options"]["hidden"] == True:
+        print("Skipping system '" + system["id"] + "'")
+        return
+
+
+    with open(output_path, mode='w') as out_file:
         print("Cooking system '" + system["id"] + "'")
+
+        filename = file.split(".")[0]
         system_list.append((filename, system))
 
         out_file.write("import System from \"./system.js\"\n\n")

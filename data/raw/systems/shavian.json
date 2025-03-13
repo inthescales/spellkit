@@ -66,6 +66,6 @@
 		"for": "𐑓"
 	},
 	"options": {
-		"capitalize": false
+		"preserve-case": false
 	}
 }

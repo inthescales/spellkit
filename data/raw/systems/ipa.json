@@ -46,6 +46,6 @@
 		"ʒ": "ʒ"
 	},
 	"options": {
-		"capitalize": false
+		"preserve-case": false
 	}
 }
