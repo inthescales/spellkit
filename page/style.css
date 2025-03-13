@@ -76,7 +76,7 @@ body {
   visibility: visible;
 }
 
-/* All Elements */
+/* Universal element styles */
 
 textarea {
 	resize: vertical;
@@ -112,6 +112,12 @@ textarea {
 
 .tab-content {
 	margin: 16px;
+}
+
+/* Presets */
+
+#preset-description {
+	font-style: italic;
 }
 
 /* Custom input */
