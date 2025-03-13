@@ -209,19 +209,46 @@ textarea {
 }
 
 .x-remove {
-	width: auto;
-	vertical-align: center;
+	width: 10px;
+	height: 10px;
 	padding: 0;
 	margin-left: 2px;
 
-	background-color: white;
-	border:none;
+	display: inline-block;
+	vertical-align: middle;
+  transform: translateY(-1px);
 
-	color: darkslategray;
+	border:none;
+	background-color: white;
+	background: 
+	 linear-gradient(to top left,
+	     rgba(0,0,0,0) 0%,
+	     rgba(0,0,0,0) calc(50% - 1.33px),
+	     darkslategray 50%,
+	     rgba(0,0,0,0) calc(50% + 1.33px),
+	     rgba(0,0,0,0) 100%),
+	 linear-gradient(to top right,
+	     rgba(0,0,0,0) 0%,
+	     rgba(0,0,0,0) calc(50% - 1.33px),
+	     darkslategray 50%,
+	     rgba(0,0,0,0) calc(50% + 1.33px),
+	     rgba(0,0,0,0) 100%);
 }
 
 .x-remove:hover {
-	color: red;
+	background: 
+	 linear-gradient(to top left,
+	     rgba(0,0,0,0) 0%,
+	     rgba(0,0,0,0) calc(50% - 1.25px),
+	     red 50%,
+	     rgba(0,0,0,0) calc(50% + 1.25px),
+	     rgba(0,0,0,0) 100%),
+	 linear-gradient(to top right,
+	     rgba(0,0,0,0) 0%,
+	     rgba(0,0,0,0) calc(50% - 1.25px),
+	     red 50%,
+	     rgba(0,0,0,0) calc(50% + 1.25px),
+	     rgba(0,0,0,0) 100%);
 }
 
 /* Output area */
@@ -234,8 +261,8 @@ textarea {
 	width: 100%;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 49% 49%;
-  gap: 2%;
+  grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+  gap: 16px;
 }
 
 .conversion-input {
