@@ -182,7 +182,7 @@
 				</table>
 				<div class="divider"></div>
 				<div class="button-row">
-					<button id="convert" onclick="convert(system_with_id(get_selected_id('system_select')), 'custom-conversion')">convert</button>
+					<button id="convert" onclick="function exec() { convert(get_custom(), 'custom-conversion') }; if_valid(exec)">convert</button>
 					<button id="clear" onclick="clear_conversion('custom-conversion')">clear</button>
 				</div>
 				<div id="custom-conversion" class="conversion">
