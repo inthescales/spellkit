@@ -3,7 +3,7 @@ English Spelling System Design Tool
 
 A web page for designing and testing phonemic English spelling systems.
 
-You can use it online [here](http://www.inthescales.com/pages/spellkit)
+You can use it online [here](http://www.inthescales.com/pages/spellkit).
 
 To run locally:
 - Download the source code
