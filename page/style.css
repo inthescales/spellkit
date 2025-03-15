@@ -218,6 +218,17 @@ textarea {
 	margin-left: 2px;
 }
 
+.question-circle:before {
+    content: '?';
+    font-weight: bold;
+    text-align: center;
+    width: 16px;
+    height: 16px;
+    font-size: 16;
+    line-height: 19px;
+    color: darkslategray;
+}
+
 .question-mark {
 	color: darkslategray;
 	font-size: 16;
