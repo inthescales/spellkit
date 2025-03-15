@@ -218,14 +218,14 @@ textarea {
 	margin-left: 2px;
 }
 
-.question-circle:before {
+.question-circle:after {
     content: '?';
     font-weight: bold;
     text-align: center;
-    width: 16px;
-    height: 16px;
-    font-size: 16;
-    line-height: 19px;
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+    line-height: 1.1em;
     color: darkslategray;
 }
 
