@@ -46,12 +46,12 @@
         "ʒ": "j"
     },
     "ligatures": {
-        "ngg": "ng",
-        "ii": "iea"
+        "ngg": "ng"
     },
     "exception-words": {
         "or": "or",
-        "of": "ov"
+        "of": "ov",
+        "year": "iear"
     },
     "options": {
         "preserve-case": true
